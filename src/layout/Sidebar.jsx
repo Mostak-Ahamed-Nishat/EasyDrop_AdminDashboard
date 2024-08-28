@@ -3,7 +3,7 @@ import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
 import companyIcon from '../assets/logo/companyLogo.png';
 import companyName from '../assets/logo/company-name.png';
-import { Gauge, CalendarCog, Component, ListTodo, Tags, ClipboardMinus, ClipboardCopy, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket} from 'lucide-react';
+import { Gauge, CalendarCog, Component, ListTodo, Tags, ClipboardMinus, ClipboardCopy, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
 
 
 const Sidebar = () => {
@@ -44,7 +44,8 @@ const Sidebar = () => {
       icon: Tags ,
       submenu: [
         { name: 'List', to: '/admin-dashboard/product/list', icon: ListTodo},
-        { name: 'Category', to: '/product/category', icon: Component},
+        { name: 'Category', to: '/product/category', icon: Component },
+        { name: 'Add product TODO', to: '/admin-dashboard/product/add-product', icon: PackagePlus},
       ],
     },
     {

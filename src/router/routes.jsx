@@ -1,5 +1,6 @@
 import App from "@/App";
 import AdminDashboard from "@/layout/AdminDashboard";
+import AddProduct from "@/pages/AddProduct";
 import Dashboard from "@/pages/Dashboard";
 import ProductPage from "@/pages/ProductPage";
 import {createBrowserRouter} from "react-router-dom";
@@ -22,6 +23,10 @@ export const router = createBrowserRouter([
         {
           path: '/admin-dashboard/product/list',
           element: <ProductPage/>
+        },
+        {
+          path: '/admin-dashboard/product/add-product',
+          element: <AddProduct></AddProduct>
         }
       ]
     }
