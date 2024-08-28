@@ -1,4 +1,6 @@
 import { ProductListAdminApi as data } from "@/api/ProductListAdminApi.js";
+import { IoIosArrowDown } from "react-icons/io";
+import { IoNotifications } from "react-icons/io5";
 import {
   Table,
   TableBody,
@@ -29,6 +31,8 @@ import {
 } from "@/components/ui/tooltip";
 import prodImage from "../assets/images/prod.jpg"; // Update as needed
 import { useState } from "react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
 
 function ProductPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -63,6 +67,46 @@ function ProductPage() {
 
   return (
     <>
+           {/* --------Header Avater */}
+           <div className="flex items-center gap-2 justify-end p-4 lg:p-5">
+            <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse">
+                    <div className="flex gap-3">
+                        <div className="flex sm:flex-row-reverse gap-3 items-center">
+                            <Avatar>
+                            <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+                            <AvatarFallback>CN</AvatarFallback>
+                            </Avatar>
+                            <div>
+                                <p className="font-bold text-xl">Shakil</p>
+                                <p className="text-[#8F8F8F] font-semibold">User Id: TODO</p>
+                            </div>
+                        </div>    
+                    </div>    
+                    <div className="">
+                        <IoNotifications></IoNotifications>
+                    </div>
+            </div>
+            
+            <div className="hidden sm:block">
+                    <Menubar>
+                        <MenubarMenu>
+                            <MenubarTrigger><IoIosArrowDown></IoIosArrowDown></MenubarTrigger>
+                            <MenubarContent className='mt-5'>
+                            <MenubarItem>
+                                Settings <MenubarShortcut>⌘T</MenubarShortcut>
+                            </MenubarItem>
+                            <MenubarSeparator/>
+                            <MenubarItem>Print</MenubarItem>
+                            <MenubarSeparator />
+                            <MenubarItem>Share</MenubarItem>
+                            <MenubarSeparator />
+                            <MenubarItem>Logout</MenubarItem>
+                            </MenubarContent>
+                        </MenubarMenu>
+                    </Menubar>
+            </div>
+         </div>
+    {/* main content here----------------------- */}
       <Table>
         <TableHeader>
           <TableRow>
