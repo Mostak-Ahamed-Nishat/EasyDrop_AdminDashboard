@@ -1,120 +1,133 @@
 import { useState } from 'react';
 import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
+import { NavLink, useLocation } from 'react-router-dom';
+import companyIcon from '../assets/logo/companyLogo.png';
+import companyName from '../assets/logo/company-name.png';
+import { Gauge, CalendarCog, Component, ListTodo, Tags, ClipboardMinus, ClipboardCopy, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket} from 'lucide-react';
+
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeIndex, setActiveIndex] = useState(0); // Track active parent item
-  const [openSubMenu, setOpenSubMenu] = useState(null); // Track open submenu
+  const [openSubMenu, setOpenSubMenu] = useState(null);
+  const location = useLocation();
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
 
-  const handleSetActive = (index) => {
-    setActiveIndex(index);
-    setOpenSubMenu(openSubMenu === index ? null : index); // Toggle submenu
+  const handleSetActive = (index, hasSubmenu) => {
+    setOpenSubMenu(openSubMenu === index ? null : index);
+
+    if (!hasSubmenu && isOpen) {
+      setIsOpen(false);
+    }
+  };
+
+  const handleSubmenuClick = () => {
+    if (isOpen) {
+      setIsOpen(false);
+    }
   };
 
   const menuItems = [
-    {
-      name: 'Dashboard',
-      submenu: null,
-    },
+    { name: 'Dashboard', icon: Gauge, submenu: null, to: '/admin-dashboard/dashboard' },
     {
       name: 'Order',
-      submenu: ['Team A', 'Team B', 'Team C'],
+      icon: CalendarCog,
+      submenu: [
+        { name: 'Team A', to: '/order/team-a', icon: ClipboardMinus},
+        { name: 'Team B', to: '/order/team-b', icon: ClipboardCopy},
+      ],
     },
     {
       name: 'Product',
-      submenu: ['List', 'Category'],
+      icon: Tags ,
+      submenu: [
+        { name: 'List', to: '/admin-dashboard/product/list', icon: ListTodo},
+        { name: 'Category', to: '/product/category', icon: Component},
+      ],
     },
     {
       name: 'User',
-      submenu: ['user1', 'user2'],
+      icon: UserCog,
+      submenu: [
+        { name: 'User-1', to: '/user/user-1', icon: UserPen},
+        { name: 'User-2', to: '/user/user-2', icon: UserRoundSearch},
+      ],
     },
-    {
-      name: 'Paynment Request',
-      submenu: null,
-    },
-    {
-      name: 'Delivery Charge',
-      submenu: null,
-    },
-    {
-      name: 'Boost Request',
-      submenu: null,
-    },
-    {
-      name: 'Comissions',
-      submenu: null,
-    },
+    { name: 'Payment Request', icon: HandCoins, submenu: null, to: '/payment-request' },
+    { name: 'Delivery Charge', icon: Truck, submenu: null, to: '/delivery-charge' },
+    { name: 'Boost Requests', icon: Rocket, submenu: null, to: '/boost-request' },
+    { name: 'Commission', icon: BadgePercent, submenu: null, to: '/commission' },
   ];
 
   return (
-    <div className="relative min-h-screen">
+    <div className="h-screen">
       {/* Mobile menu button */}
-      <div className="fixed top-0 left-0 p-4 md:hidden z-20">
+      <div className="md:hidden p-4">
         <button onClick={toggleSidebar} className="text-gray-800">
           {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
         </button>
       </div>
 
-      {/* Sidebar Overlay */}
+      {/* Sidebar Overlay for mobile */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-10" onClick={toggleSidebar}></div>
       )}
 
       {/* Sidebar */}
       <div
-        className={`fixed inset-y-0 left-0 bg-gray-800 text-white w-64 transform ${
+        className={`fixed inset-y-0 left-0 bg-[#f8fafc] text-black w-64 transform ${
           isOpen ? 'translate-x-0' : '-translate-x-full'
-        } md:translate-x-0 transition-transform duration-500 ease-in-out z-20`}
-      >
-        <div className="p-4 flex justify-between items-center">
-          <span className="text-lg font-bold">Brand</span>
-          <button onClick={toggleSidebar} className="md:hidden">
-            <FaTimes size={24} />
-          </button>
+        } md:translate-x-0 transition-transform duration-300 ease-in-out z-20`}
+          >
+              {/* company name & logo */}
+        <div className="p-4">
+          <NavLink to="/" className="text-lg font-bold">
+            <span><img className='mx-auto h-5 sm:h-10' src={companyIcon} alt="Company Icon" /></span>
+            <span><img className='mx-auto h-4 sm:h-8' src={companyName} alt="Company Name" /></span>
+          </NavLink>
         </div>
-        <nav className="mt-10">
+        <nav className="mt-8 space-y-2">
           {menuItems.map((item, index) => (
             <div key={index}>
-              <a
-                href="#"
-                className={`flex items-center justify-between py-2.5 px-4 rounded transition-all duration-300 hover:bg-gray-700 ${
-                  activeIndex === index ? 'bg-gray-700' : ''
+              <NavLink
+                to={item.to || '#'}
+                className={`flex text-lg items-center justify-between py-2.5 px-4 font-semibold border rounded ${
+                  !item.submenu && location.pathname === item.to ? 'bg-[#139FAD] text-white' : ''
                 }`}
-                onClick={() => handleSetActive(index)}
+                onClick={() => handleSetActive(index, !!item.submenu)}
               >
-                <span>{item.name}</span>
+                <div className="flex items-center justify-center">
+                  {item.icon && <item.icon className="mr-3" />}
+                  <span>{item.name}</span>
+                </div>
                 {item.submenu && (
                   <span>
                     {openSubMenu === index ? <FaChevronDown /> : <FaChevronRight />}
                   </span>
                 )}
-              </a>
+              </NavLink>
               {item.submenu && openSubMenu === index && (
-                <div className="pl-6">
+                <div className="pl-4">
                   {item.submenu.map((subItem, subIndex) => (
-                    <a
-                      href="#"
+                    <NavLink
+                      to={subItem.to}
                       key={subIndex}
-                      className="block py-2.5 px-4 rounded transition-all duration-300 hover:bg-gray-600"
+                      className={`flex items-center py-2 px-4 rounded ${
+                        location.pathname === subItem.to ? 'bg-[#139FAD] text-white' : 'hover:bg-gray-200'
+                      }`}
+                      onClick={handleSubmenuClick}
                     >
-                      {subItem}
-                    </a>
+                      <subItem.icon className="mr-3 items-center justify-center " />
+                      <span>{subItem.name}</span>
+                    </NavLink>
                   ))}
                 </div>
               )}
             </div>
           ))}
         </nav>
-      </div>
-
-      {/* Main content area */}
-      <div className="relative p-10">
-        <h1 className="text-2xl font-bold">Main Content</h1>
-        {/* Add your main content here */}
       </div>
     </div>
   );
