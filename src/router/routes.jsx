@@ -2,6 +2,7 @@ import App from "@/App";
 import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
 import Dashboard from "@/pages/Dashboard";
+import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
 import ProductListPage from "@/pages/Product/ProductListPage";
 
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/product/details",
         element: <ProductDetailsPage></ProductDetailsPage>,
+      },
+      {
+        path: "/admin-dashboard/product/category",
+        element: <ProductCategoryList></ProductCategoryList>,
       },
     ],
   },

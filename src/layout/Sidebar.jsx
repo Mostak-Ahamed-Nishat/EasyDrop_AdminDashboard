@@ -44,7 +44,7 @@ const Sidebar = () => {
       icon: Tags ,
       submenu: [
         { name: 'List', to: '/admin-dashboard/product/list', icon: ListTodo},
-        { name: 'Category', to: '/product/category', icon: Component },
+        { name: 'Category', to: '/admin-dashboard/product/category', icon: Component },
         { name: 'Add product TODO', to: '/admin-dashboard/product/add-product', icon: PackagePlus},
       ],
     },
@@ -89,6 +89,7 @@ const Sidebar = () => {
             <span><img className='mx-auto h-4 sm:h-8' src={companyName} alt="Company Name" /></span>
           </NavLink>
         </div>
+
         <nav className="mt-8 space-y-2">
           {menuItems.map((item, index) => (
             <div key={index}>

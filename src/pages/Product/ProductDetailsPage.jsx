@@ -32,6 +32,11 @@ const ProductDetailsPage = () => {
                 src={pro4}
                 alt="Product thumbnail 3"
               />
+              <img
+                className="w-[120px] h-[120px] rounded-lg"
+                src={pro2}
+                alt="Product thumbnail 1"
+              />
             </div>
           </div>
         </div>
@@ -153,110 +158,3 @@ const ProductDetailsPage = () => {
 };
 
 export default ProductDetailsPage;
-
-{
-  /* Product Image and Details Section */
-}
-{
-  /* <div className="grid grid-cols-1 md:grid-cols-3 gap-4"> */
-}
-
-{
-  /* Product Images */
-}
-{
-  /* <div className="col-span-1">
-          <div className="p-4 border rounded-lg bg-[#D9D9D9]">
-            <img className="w-full rounded-lg" src={pro1} alt="Main product" />
-            <div className="flex mt-4 space-x-4">
-              <img
-                className="w-[120px] h-[120px] rounded-lg"
-                src={pro2}
-                alt="Product thumbnail 1"
-              />
-              <img
-                className="w-[120px] h-[120px]  rounded-lg"
-                src={pro3}
-                alt="Product thumbnail 2"
-              />
-              <img
-                className="w-[120px] h-[120px]  rounded-lg"
-                src={pro4}
-                alt="Product thumbnail 3"
-              />
-            </div>
-          </div>
-        </div> */
-}
-
-{
-  /* Product Info */
-}
-{
-  /* <div className="col-span-1 md:col-span-2 ">
-          <div className="p-4 border rounded-lg bg-[#D9D9D9]">
-            <h2 className="text-2xl font-bold">Men Slim Fit T-Shirt</h2>
-            <div className="flex items-center mt-2">
-              <Star size={18} fill="#FFC700" className="text-yellow-500" />
-              <p className="ml-2 text-lg">4.5</p>
-              <p className="ml-2 text-sm text-gray-500">(44 reviews)</p>
-            </div>
-
-            <div className="mt-4">
-              <p className="text-sm text-gray-600">
-                Resell Price: <strong>Tk. 600</strong>
-              </p>
-              <p className="text-sm text-gray-600">
-                Retail Price: <strong>Tk. 600</strong>
-              </p>
-              <p className="text-sm text-gray-600">
-                Suggested Price: <strong>Tk. 600</strong>
-              </p>
-              <div className="mt-4">
-                <p className="text-sm text-gray-600">Colors:</p>
-                <div className="flex gap-2 mt-2">
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    White: 20
-                  </span>
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    Black: 20
-                  </span>
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    Red: 20
-                  </span>
-                </div>
-              </div>
-              <div className="mt-4">
-                <p className="text-sm text-gray-600">Sizes:</p>
-                <div className="flex gap-2 mt-2">
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    S
-                  </span>
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    M
-                  </span>
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    L
-                  </span>
-                  <span className="px-2 py-1 bg-gray-200 text-gray-700 rounded-md">
-                    XL
-                  </span>
-                </div>
-              </div>
-              <p className="mt-4 text-sm text-gray-600">
-                Stock: <strong>12 pieces available</strong>
-              </p>
-              <p className="text-sm text-gray-600 mt-4">
-                Added By: <strong>Sristy</strong>
-              </p>
-              <p className="text-sm text-gray-600">
-                Added On: <strong>25-8-2024</strong>
-              </p>
-            </div>
-          </div>
-        </div> */
-}
-
-{
-  /* </div> */
-}
