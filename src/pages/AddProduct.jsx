@@ -11,6 +11,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import { FaTimes } from 'react-icons/fa';
 
 
 const categories = [
@@ -61,26 +62,47 @@ const AddProduct = () => {
 
     })
     // -----------------------
-    const [variantOptions, setVariantOptions] = useState("");
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
+    const [variantName, setVariantName] = useState('');
+    const [variantOptions, setVariantOptions] = useState('');
     const [keywords, setKeywords] = useState([]);
     const [savedKeywords, setSavedKeywords] = useState([]);
-    const [isDialogOpen, setIsDialogOpen] = useState(false);
-  
+
     const handleAddKeyword = () => {
-      if (variantOptions.trim()) {
-        setKeywords([...keywords, variantOptions.trim()]);
-        setVariantOptions("");
-      }
+        if (variantOptions) {
+            setKeywords([...keywords, variantOptions]);
+            setVariantOptions(''); // Clear the input after adding
+        }
     };
-  
-    const handleDeleteKeyword = (index) => {
-      setKeywords(keywords.filter((_, i) => i !== index));
-    };
-  
+
     const handleSaveChanges = () => {
-      setSavedKeywords(keywords);
-      setKeywords([]); 
-      setIsDialogOpen(false);
+        if (variantName) {
+            // Save the variant name and keywords
+            setSavedKeywords([...savedKeywords, { variantName, keywords }]);
+            setVariantName(''); // Clear the variant name
+            setKeywords([]); // Clear keywords
+            setIsDialogOpen(false); // Close the dialog
+        }
+    };
+
+    const handleDeleteKeyword = (index) => {
+        const newKeywords = keywords.filter((_, i) => i !== index);
+        setKeywords(newKeywords);
+    };
+
+    const handleRemoveVariant = (index) => {
+        const newSavedKeywords = savedKeywords.filter((_, i) => i !== index);
+        setSavedKeywords(newSavedKeywords);
+    };
+
+    const handleRemoveKeyword = (variantIndex, keywordIndex) => {
+        const newSavedKeywords = savedKeywords.map((item, i) => 
+            i === variantIndex ? {
+                ...item,
+                keywords: item.keywords.filter((_, ki) => ki !== keywordIndex)
+            } : item
+        );
+        setSavedKeywords(newSavedKeywords);
     };
     // -----------------------
     
@@ -160,7 +182,7 @@ const AddProduct = () => {
   return (
       <>
           <div className="p-3 grid sm:grid-cols-12 gap-4">
-      <div className="sm:col-span-12 rounded-lg p-4 shadow-md w-full border-gray-300 mx-auto flex flex-col items-center justify-center text-center">
+      <div className="sm:col-span-12  p-4  w-full border-gray-300 mx-auto flex flex-col items-center justify-center text-center">
         <h1 className="font-bold sm:font-semibold text-md sm:text-3xl mb-1">Add Product</h1>
         <p className="text-center text-sm font-semibold mb-4">File upload description</p>
 
@@ -277,26 +299,30 @@ const AddProduct = () => {
                   {/* ----Add Variant -Button with visible nonvisible items */}
                   <div className="flex items-center mt-11 gap-2 sm:gap-10">
                   <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-                        <DialogTrigger asChild>
-                        <Button variant="outline" className="bg-[#139FAD] text-white hover:text-black">Add variant</Button>
-                        </DialogTrigger>
-                        <DialogContent className="sm:max-w-[425px]">
-                        <DialogHeader>
-                                  <DialogTitle>Add variant</DialogTitle>
-                                  <DialogDescription></DialogDescription>
-                        </DialogHeader>
-                        <div className="grid gap-4 py-4">
-                            <div className="grid grid-cols-4 items-center gap-4">
+                <DialogTrigger asChild>
+                    <Button variant="outline" className="bg-[#139FAD] text-white hover:text-black">
+                        Add variant
+                    </Button>
+                </DialogTrigger>
+                <DialogContent className="sm:max-w-[425px]">
+                    <DialogHeader>
+                        <DialogTitle>Add variant</DialogTitle>
+                        <DialogDescription></DialogDescription>
+                    </DialogHeader>
+                    <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
                             <Input 
                                 id="name" 
+                                value={variantName}
+                                onChange={(e) => setVariantName(e.target.value)}
                                 placeholder="variant name" 
                                 className="col-span-3" 
                             />
                             <Button className="text-right bg-green-500 hover:bg-green-500">
                                 Search
                             </Button>
-                            </div>
-                            <div className="grid grid-cols-4 items-center gap-4">
+                        </div>
+                        <div className="grid grid-cols-4 items-center gap-4">
                             <Input 
                                 id="variantOptions" 
                                 value={variantOptions}
@@ -307,25 +333,25 @@ const AddProduct = () => {
                             <Button onClick={handleAddKeyword} className="text-right bg-blue-500 hover:bg-blue-500">
                                 Add
                             </Button>
-                            </div>
-                            <div className="flex flex-wrap gap-2">
+                        </div>
+                        <div className="flex flex-wrap gap-2">
                             {keywords.map((keyword, index) => (
                                 <div key={index} className="flex items-center bg-gray-200 rounded shadow-sm px-2 py-1">
-                                <span className="mr-2">{keyword}</span>
-                                <button onClick={() => handleDeleteKeyword(index)} className="text-red-500">
-                                    &times;
-                                </button>
+                                    <span className="mr-2">{keyword}</span>
+                                    <button onClick={() => handleDeleteKeyword(index)} className="text-red-500">
+                                        &times;
+                                    </button>
                                 </div>
                             ))}
-                            </div>
                         </div>
-                        <DialogFooter>
-                            <Button onClick={handleSaveChanges} className="text-right" type="submit">
+                    </div>
+                    <DialogFooter>
+                        <Button onClick={handleSaveChanges} className="text-right" type="button">
                             Save changes
-                            </Button>
-                        </DialogFooter>
-                        </DialogContent>
-                    </Dialog>
+                        </Button>
+                    </DialogFooter>
+                </DialogContent>
+            </Dialog>
                       
                       <div className="flex items-center space-x-2">
                           {[
@@ -344,55 +370,74 @@ const AddProduct = () => {
                             ))}
                       </div>
 
-                        </div>
-                       {/* Display saved data */}
-                        <div className="mt-10">
-                        <div className="flex flex-col gap-2">
-                            {savedKeywords.map((keyword, index) => (
-                            <div key={index} className="flex items-center gap-4 ">
-                                {/* Keyword Display */}
-                                <p className="mr-2 w-[120px] rounded shadow-sm px-2 py-1 bg-gray-200">{keyword}</p>
-
-                                {/* Button */}
-                                <button 
-                                onClick={() => handleAddKeyword(keyword)} 
-                                className="bg-green-500 w-[120px] text-white font-semibold px-2 py-1 rounded"
+                  </div>
+                  {/* display data from dialog */}
+                  <div className="mt-10">
+                    <div className="flex flex-col gap-2">
+                    {savedKeywords.map((item, index) => (
+                        <div key={index} className="flex flex-col gap-4">
+                            <div className="flex items-center gap-2">
+                            <button 
+                                    onClick={() => handleRemoveVariant(index)}
+                                    className="text-red-500"
                                 >
-                                Select Image
+                                    <FaTimes />
                                 </button>
-
-                                {/* Inputs */}
-                                <div className="flex flex-row gap-1">
+                                <p className="mr-2 w-[120px] rounded shadow-sm px-2 py-1 bg-gray-200">
+                                    Variant: {item.variantName}
+                                </p>
                                 
-                                <input 
-                                    type="number" 
-                                    placeholder="Stock" 
-                                    className="border rounded shadow-sm px-2 py-1 w-[150px]" 
-                                />
-
-                               
-                                <input 
-                                    type="number" 
-                                    placeholder="Low stock" 
-                                    className="border rounded shadow-sm px-2 py-1 w-[150px]" 
-                                />
-                                </div>
                             </div>
-                            ))}
+                            <div className="flex flex-col gap-2 ml-4">
+                                {item.keywords.map((keyword, keywordIndex) => (
+                                    <div key={keywordIndex} className="flex items-center gap-4 ">
+                                    <button 
+                                    onClick={() => handleRemoveKeyword(index, keywordIndex)} 
+                                    className="text-red-500"
+                                >
+                                    <FaTimes />
+                                </button>
+                                <p className="mr-2 w-[70px] sm:w-[120px] rounded shadow-sm px-2 py-1 bg-gray-200">
+                                    {keyword}
+                                </p>
+                                
+                                <button 
+                                    onClick={() => handleAddKeyword(keyword)} 
+                                    className="bg-green-500 w-[70px] sm:w-[150px] text-white font-semibold px-1 sm:px-2 py-.5 sm:py-1 rounded"
+                                >
+                                    Select Image
+                                </button>
+                                <div className="flex flex-row gap-1">
+                                    <input 
+                                        type="number" 
+                                        placeholder="Stock" 
+                                        className="border rounded shadow-sm px-2 py-1 w-[70px] sm:w-[150px]" 
+                                    />
+                                    <input 
+                                        type="number" 
+                                        placeholder="Low stock" 
+                                        className="border rounded shadow-sm px-2 py-1 w-[70px] sm:w-[150px]" 
+                                    />
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
-                        </div>
+                    ))}
+                </div>
+                    </div>
 
-                        
+                        {/* submit button-----------for all data */}
                         <div className="mt-10 flex gap-4">
                             <button
                                 onClick={() => setFiles([])}
-                                className="bg-[#F1F1F1] hover:bg-gray-200 text-gray-500 text-sm px-3 py-2 shadow-2xl rounded-lg"
+                                className="bg-[#F1F1F1] hover:bg-gray-200 font-semibold text-gray-500 text-sm px-3 py-2 shadow-2xl rounded-lg"
                             >
                                 Cancel
                             </button>
                             <button
                                 onClick={handleSubmitProductDetails}
-                                className="text-sm px-3 py-2 shadow-2xl text-white rounded-lg bg-[#522F8F]"
+                                className="text-sm px-3 py-2 shadow-2xl text-white font-semibold rounded-lg bg-[#139FAD]"
                             >
                                 Submit
                             </button>
