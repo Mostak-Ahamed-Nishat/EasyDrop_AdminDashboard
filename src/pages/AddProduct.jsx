@@ -9,6 +9,8 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch"
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 
 
 const categories = [
@@ -37,16 +39,11 @@ const fileIcons = {
 };
 
 const AddProduct = () => {
-    const [toggleStates, setToggleStates] = useState({
-        Red: false,
-        Blue: false,
-        Green: false,
-      });
+    
     
     const [files, setFiles] = useState([]);
 
-    const [showVariants, setShowVariants] = useState(false);
-
+   
     const [formData, setFormData] = useState({
         name: '', 
         category: '',
@@ -63,19 +60,31 @@ const AddProduct = () => {
         featuredProduct: false,
 
     })
-    
-      const handleToggle = (color) => {
-        setToggleStates((prevState) => ({
-          ...prevState,
-          [color]: !prevState[color],
-        }));
-      };
+    // -----------------------
+    const [variantOptions, setVariantOptions] = useState("");
+    const [keywords, setKeywords] = useState([]);
+    const [savedKeywords, setSavedKeywords] = useState([]);
+    const [isDialogOpen, setIsDialogOpen] = useState(false);
   
- 
-
-    const toggleVariants = () => {
-        setShowVariants(!showVariants);
-    }
+    const handleAddKeyword = () => {
+      if (variantOptions.trim()) {
+        setKeywords([...keywords, variantOptions.trim()]);
+        setVariantOptions("");
+      }
+    };
+  
+    const handleDeleteKeyword = (index) => {
+      setKeywords(keywords.filter((_, i) => i !== index));
+    };
+  
+    const handleSaveChanges = () => {
+      setSavedKeywords(keywords);
+      setKeywords([]); 
+      setIsDialogOpen(false);
+    };
+    // -----------------------
+    
+   
   
 
   const handleChange = (newFiles) => {
@@ -115,7 +124,7 @@ const AddProduct = () => {
         const productData = {
           ...formData,
           files: files,
-          variants: showVariants ? toggleStates : null,
+         
         };
         console.log("Submitting product data:", productData);
       };
@@ -142,11 +151,11 @@ const AddProduct = () => {
     setFiles(updatedFiles);
   };
 
-  const handleSubmit = () => {
-    if (files.length > 0) {
-      console.log("Submitting files:", files);
-    }
-  };
+//   const handleSubmit = () => {
+//     if (files.length > 0) {
+//       console.log("Submitting files:", files);
+//     }
+//   };
 
   return (
       <>
@@ -266,15 +275,58 @@ const AddProduct = () => {
                   </div>
                      
                   {/* ----Add Variant -Button with visible nonvisible items */}
-                  <div className="flex mt-11 gap-2 sm:gap-10">
-                        <div className="">
-                                <button
-                                    onClick={toggleVariants}
-                                    className="text-xs sm:text-sm font-semibold py-1 sm:py-2 bg-[#139FAD] border shadow rounded-lg px-2 sm:px-3   text-white"
-                                >
-                                Add Variant
+                  <div className="flex items-center mt-11 gap-2 sm:gap-10">
+                  <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+                        <DialogTrigger asChild>
+                        <Button variant="outline" className="bg-[#139FAD] text-white hover:text-black">Add variant</Button>
+                        </DialogTrigger>
+                        <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                                  <DialogTitle>Add variant</DialogTitle>
+                                  <DialogDescription></DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                            <div className="grid grid-cols-4 items-center gap-4">
+                            <Input 
+                                id="name" 
+                                placeholder="variant name" 
+                                className="col-span-3" 
+                            />
+                            <Button className="text-right bg-green-500 hover:bg-green-500">
+                                Search
+                            </Button>
+                            </div>
+                            <div className="grid grid-cols-4 items-center gap-4">
+                            <Input 
+                                id="variantOptions" 
+                                value={variantOptions}
+                                onChange={(e) => setVariantOptions(e.target.value)}
+                                placeholder="variant options" 
+                                className="col-span-3" 
+                            />
+                            <Button onClick={handleAddKeyword} className="text-right bg-blue-500 hover:bg-blue-500">
+                                Add
+                            </Button>
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                            {keywords.map((keyword, index) => (
+                                <div key={index} className="flex items-center bg-gray-200 rounded shadow-sm px-2 py-1">
+                                <span className="mr-2">{keyword}</span>
+                                <button onClick={() => handleDeleteKeyword(index)} className="text-red-500">
+                                    &times;
                                 </button>
-                      </div>
+                                </div>
+                            ))}
+                            </div>
+                        </div>
+                        <DialogFooter>
+                            <Button onClick={handleSaveChanges} className="text-right" type="submit">
+                            Save changes
+                            </Button>
+                        </DialogFooter>
+                        </DialogContent>
+                    </Dialog>
+                      
                       <div className="flex items-center space-x-2">
                           {[
                               { label: "External Product", id: "externalProduct", state: formData.externalProduct },
@@ -291,53 +343,47 @@ const AddProduct = () => {
                                 </div>
                             ))}
                       </div>
-                        
-                  </div>
-                   {/* ------Toggle items----- */}
-                        <div className="space-y-4 mt-8">
-                                    {showVariants && (
-                                        <div className="flex flex-col space-y-4">
-                                        {["White","Black", "Blue", "Green", 'yellow'].map((color) => (
-                                            <div key={color} className="flex items-center justify-between space-x-4">
-                                            {/* Color Label */}
-                                                <div className="flex items-center space-x-2 shadow-2xl rounded bg-gray-100 p-1">
-                                                <span className="w-4 h-4 rounded-full"
-                                                    style={{
-                                                        backgroundColor:
-                                                            color.toLowerCase(),
-                                                    }}
-                                                ></span>
-                                                {/* <label className="text-xs sm:text-md font-medium">{color}</label> */}
-                                            </div>
 
-                                            {/* Toggle */}
-                                            <div className="flex items-center space-x-4">
-                                                <div
-                                                onClick={() => handleToggle(color)}
-                                                className="relative w-20 sm:w-16 h-6 bg-[#e2e8f0] rounded-md p-1 cursor-pointer flex items-center"
-                                                >
-                                                <div
-                                                    className={`absolute w-6 h-4 bg-white rounded-md shadow-md flex items-center justify-center font-bold text-white transition-transform duration-300 transform ${
-                                                    toggleStates[color] ? 'translate-x-4 sm:translate-x-8 bg-green-500' : 'translate-x-0 bg-red-500'
-                                                    }`}
-                                                ></div>
-                                                </div>
-                                                <span className={`font-normal sm:font-semibold ${toggleStates[color] ? 'text-green-500' : 'text-gray-500'}`}>
-                                                {toggleStates[color] ? <button className="border shadow rounded px-1 sm:px-2 py-.1 sm:py-.4 bg-green-500 text-white">Setected</button> : <button className="border shadow rounded px-1 sm:px-2 py-.1 sm:py-.4 bg-[#e2e8f0] text-white">Setected</button>}
-                                                    </span>
-                                                    <div className="border shadow-sm rounded px-1 py-.5">
-                                                        <span className="text-xs sm:text-lg">TODO</span>
-                                                    </div>
-                                                    <div className="border shadow-sm rounded px-1 py-.5">
-                                                        <span className="text-xs sm:text-lg">TODO</span>
-                                                    </div>
-                                            </div>
-                                            </div>
-                                        ))}
-                                        </div>
-                                    )}
                         </div>
-                        <div className="mt-6 flex gap-4">
+                       {/* Display saved data */}
+                        <div className="mt-10">
+                        <div className="flex flex-col gap-2">
+                            {savedKeywords.map((keyword, index) => (
+                            <div key={index} className="flex items-center gap-4 ">
+                                {/* Keyword Display */}
+                                <p className="mr-2 w-[120px] rounded shadow-sm px-2 py-1 bg-gray-200">{keyword}</p>
+
+                                {/* Button */}
+                                <button 
+                                onClick={() => handleAddKeyword(keyword)} 
+                                className="bg-green-500 w-[120px] text-white font-semibold px-2 py-1 rounded"
+                                >
+                                Select Image
+                                </button>
+
+                                {/* Inputs */}
+                                <div className="flex flex-row gap-1">
+                                
+                                <input 
+                                    type="number" 
+                                    placeholder="Stock" 
+                                    className="border rounded shadow-sm px-2 py-1 w-[150px]" 
+                                />
+
+                               
+                                <input 
+                                    type="number" 
+                                    placeholder="Low stock" 
+                                    className="border rounded shadow-sm px-2 py-1 w-[150px]" 
+                                />
+                                </div>
+                            </div>
+                            ))}
+                        </div>
+                        </div>
+
+                        
+                        <div className="mt-10 flex gap-4">
                             <button
                                 onClick={() => setFiles([])}
                                 className="bg-[#F1F1F1] hover:bg-gray-200 text-gray-500 text-sm px-3 py-2 shadow-2xl rounded-lg"
@@ -351,9 +397,12 @@ const AddProduct = () => {
                                 Submit
                             </button>
                         </div>
+                  </div>
+              
+
               </div>
               
-          </div>
+          
           
             
       </>
