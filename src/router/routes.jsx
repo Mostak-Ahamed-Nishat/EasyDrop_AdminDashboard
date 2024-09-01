@@ -2,32 +2,41 @@ import App from "@/App";
 import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
 import Dashboard from "@/pages/Dashboard";
-import ProductPage from "@/pages/ProductPage";
-import {createBrowserRouter} from "react-router-dom";
-  
+import ProductCategoryList from "@/pages/Product/ProductCategoryList";
+import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
+import ProductListPage from "@/pages/Product/ProductListPage";
 
+import { createBrowserRouter } from "react-router-dom";
 
 export const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <App></App>,
-    },
-    {
-      path: '/admin-dashboard',
-      element: <AdminDashboard></AdminDashboard>,
-      children: [
-        {
-          path: '/admin-dashboard/dashboard',
-          element: <Dashboard></Dashboard>
-        },
-        {
-          path: '/admin-dashboard/product/list',
-          element: <ProductPage/>
-        },
-        {
-          path: '/admin-dashboard/product/add-product',
-          element: <AddProduct></AddProduct>
-        }
-      ]
-    }
-  ]);
+  {
+    path: "/",
+    element: <App></App>,
+  },
+  {
+    path: "/admin-dashboard",
+    element: <AdminDashboard></AdminDashboard>,
+    children: [
+      {
+        path: "/admin-dashboard/dashboard",
+        element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/admin-dashboard/product/list",
+        element: <ProductListPage />,
+      },
+      {
+        path: "/admin-dashboard/product/add-product",
+        element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/admin-dashboard/product/details",
+        element: <ProductDetailsPage></ProductDetailsPage>,
+      },
+      {
+        path: "/admin-dashboard/product/category",
+        element: <ProductCategoryList></ProductCategoryList>,
+      },
+    ],
+  },
+]);
