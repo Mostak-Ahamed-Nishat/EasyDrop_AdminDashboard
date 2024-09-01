@@ -85,7 +85,7 @@ const Sidebar = () => {
               {/* company name & logo */}
         <div className="p-4">
           <NavLink to="/" className="text-lg font-bold">
-            <span><img className='mx-auto h-5 sm:h-10' src={companyIcon} alt="Company Icon" /></span>
+            <span><img className='mx-auto h-5 sm:h-10 mb-1' src={companyIcon} alt="Company Icon" /></span>
             <span><img className='mx-auto h-4 sm:h-8' src={companyName} alt="Company Name" /></span>
           </NavLink>
         </div>
