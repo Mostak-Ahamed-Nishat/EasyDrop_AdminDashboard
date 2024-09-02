@@ -21,9 +21,16 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 function ProductListPage() {
+  // navigate to the product edit page----
+  const navigate = useNavigate();
+
+  const goToProductEditPage = () => {
+        navigate('/admin-dashboard/product/edit-product');
+  };
+  
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -125,10 +132,14 @@ function ProductListPage() {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger>
+                        {/* navigate to the product edit page */}
+                       
                         <PencilLine
-                          className="bg-[#b5d0f0] rounded-sm py-[5px] px-[8px]"
-                          size={30}
-                        />
+                          onClick={goToProductEditPage}
+                            className="bg-[#b5d0f0] rounded-sm py-[5px] px-[8px]"
+                            size={30}
+                          />
+                        
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Edit Product</p>
