@@ -5,7 +5,7 @@ import AddProduct from "@/pages/AddProduct";
 import AnnouncementPage from "@/pages/AnnouncementPage";
 import CreateAnnouncementPage from "@/pages/CreateAnnouncementPage";
 import Dashboard from "@/pages/Dashboard";
-// import OrderDetailsPage from "@/pages/OrderDetailsPage";
+import EditProduct from "@/pages/Product/EditProduct";
 import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
 import ProductListPage from "@/pages/Product/ProductListPage";
@@ -32,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/product/add-product",
         element: <AddProduct></AddProduct>,
+      },
+      {
+        path: "/admin-dashboard/product/edit-product",
+        element: <EditProduct></EditProduct>,
       },
       {
         path: "/admin-dashboard/product/details",

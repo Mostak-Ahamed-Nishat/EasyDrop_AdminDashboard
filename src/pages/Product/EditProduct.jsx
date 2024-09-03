@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { CircleX } from 'lucide-react';
 import { FileUploader } from "react-drag-drop-files";
-import jpgIcon from '../assets/Icon/jpgIcon.png';
-import pngIcon from '../assets/Icon/png.png';
-import uploadIcon from '../assets/Icon/upload.png';
+import jpgIcon from '../../assets/Icon/jpgIcon.png';
+import pngIcon from '../../assets/Icon/jpgIcon.png';
+import uploadIcon from '../../assets/Icon/upload.png';
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
@@ -39,7 +39,11 @@ const fileIcons = {
   JPEG: jpgIcon
 };
 
-const AddProduct = () => {
+
+
+const EditProduct = () => {
+
+
     const [files, setFiles] = useState([]);
     const [formData, setFormData] = useState({
         name: '', 
@@ -172,14 +176,15 @@ const AddProduct = () => {
 //     if (files.length > 0) {
 //       console.log("Submitting files:", files);
 //     }
-//   };
+    //   };
+    
 
-  return (
-      <>
-          <div className="p-3 grid sm:grid-cols-12 gap-4">
+    return (
+        <>
+              <div className="p-3 grid sm:grid-cols-12 gap-4">
       <div className="sm:col-span-12  p-4  w-full border-gray-300 mx-auto flex flex-col items-center justify-center text-center">
-        <h1 className="font-bold sm:font-semibold text-md sm:text-3xl mb-1">Add Product</h1>
-        <p className="text-center text-sm font-semibold mb-4">File upload description</p>
+        <h1 className="font-bold sm:font-semibold text-md sm:text-3xl mb-1">Edit Product</h1>
+        <p className="text-center text-sm font-semibold mb-4">Edit product description</p>
 
         <div className="flex w-full justify-between items-start">
           {/* Drag & Drop Area */}
@@ -448,12 +453,8 @@ const AddProduct = () => {
               
 
               </div>
-              
-          
-          
-            
-      </>
-  );
+        </>
+    );
 };
 
-export default AddProduct;
+export default EditProduct;
