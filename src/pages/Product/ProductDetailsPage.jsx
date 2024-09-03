@@ -13,7 +13,7 @@ const ProductDetailsPage = () => {
     <div className="p-4">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* Product Images */}
-        <div className="col-span-1 flex">
+        <div className="col-span-1">
           <div className="p-4 border rounded-lg bg-[#d9d9d981] flex-1">
             <img className="w-full rounded-lg" src={pro1} alt="Main product" />
             <div className="flex mt-4 space-x-4">
