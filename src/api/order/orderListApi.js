@@ -7,6 +7,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -17,6 +18,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -27,6 +29,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -37,6 +40,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -47,6 +51,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -57,6 +62,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -67,6 +73,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -77,6 +84,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -87,6 +95,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -97,6 +106,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -107,6 +117,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -117,6 +128,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -127,6 +139,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -137,6 +150,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -147,6 +161,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -157,6 +172,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -167,6 +183,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -177,6 +194,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -187,6 +205,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -197,6 +216,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -207,6 +227,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -217,6 +238,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -227,6 +249,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -237,6 +260,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -247,6 +271,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -257,6 +282,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -267,6 +293,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -277,6 +304,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -287,6 +315,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -297,6 +326,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -307,6 +337,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -317,6 +348,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -327,6 +359,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -337,6 +370,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -347,6 +381,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -357,6 +392,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -367,6 +403,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -377,6 +414,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -387,6 +425,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -397,6 +436,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -407,6 +447,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -417,6 +458,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -427,6 +469,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -437,6 +480,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -447,6 +491,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -457,6 +502,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -467,6 +513,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -477,6 +524,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -487,6 +535,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -497,6 +546,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -507,6 +557,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -517,6 +568,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -527,6 +579,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -537,6 +590,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -547,6 +601,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -557,6 +612,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -567,6 +623,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -577,6 +634,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -587,6 +645,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -597,6 +656,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -607,6 +667,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -617,6 +678,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -627,6 +689,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -637,6 +700,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'deactive',
         details: '...',      
     },
     {
@@ -647,6 +711,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -657,6 +722,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -667,6 +733,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -677,6 +744,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -687,6 +755,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -697,6 +766,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -707,6 +777,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -717,6 +788,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -727,6 +799,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -737,6 +810,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -747,6 +821,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -757,6 +832,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -767,6 +843,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -777,6 +854,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -787,6 +865,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -797,6 +876,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -807,6 +887,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -817,6 +898,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -827,6 +909,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -837,6 +920,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -847,6 +931,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -857,6 +942,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -867,6 +953,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -877,6 +964,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -887,6 +975,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -897,6 +986,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -907,6 +997,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -917,6 +1008,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'active',
         details: '...',      
     },
     {
@@ -927,6 +1019,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -937,6 +1030,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -947,6 +1041,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -957,6 +1052,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
     {
@@ -967,6 +1063,7 @@ export const orderList = [
         contact: '0171234587',
         order_by: '0125458878',
         cashOn_delivary: '500',
+        status: 'pending',
         details: '...',      
     },
 ];

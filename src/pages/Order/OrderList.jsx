@@ -4,7 +4,7 @@ import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, Me
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
+import { ArrowUp, CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
@@ -14,6 +14,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import TablePagination from "@/components/TablePagination";
 import { orderList } from "@/api/order/orderListApi";
+
 
 
 const OrderList = () => {
@@ -84,14 +85,78 @@ const OrderList = () => {
             <div className="p-3">
                 <h1 className="text-2xl sm:hidden font-semibold mb-4">Balance</h1>
                 <div className="p-3 grid sm:grid-cols-12 gap-4">
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md"></div>
+                    {/* Total Order */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Total Order</h1>
+                         <h1 className="text-3xl font-bold">200</h1>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-[#00E676] bg-opacity-20 size-5 rounded-full flex items-center justify-center">
+                            <ArrowUp className=" text-[#00E676] size-4"></ArrowUp> 
+                            </div> 
+                            <div>
+                                <p><span className="text-[#00E676] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Cancle Order */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Cancle Order</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                    </div>
+                   {/* Shipped Order */}
+                   <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Shipped Order</h1>
+                         <h1 className="text-3xl font-bold">200</h1>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-[#00E676] bg-opacity-20 size-5 rounded-full flex items-center justify-center">
+                            <ArrowUp className=" text-[#00E676] size-4"></ArrowUp> 
+                            </div> 
+                            <div>
+                                <p><span className="text-[#00E676] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
+                            </div>
+                        </div>
+                    </div>
+                     {/* Cancle Order */}
+                     <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Pending Order</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                    </div>
+                    {/* Total delivery */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Total Delivery</h1>
+                         <h1 className="text-3xl font-bold">200</h1>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-[#00E676] bg-opacity-20 size-5 rounded-full flex items-center justify-center">
+                            <ArrowUp className=" text-[#00E676] size-4"></ArrowUp> 
+                            </div> 
+                            <div>
+                                <p><span className="text-[#00E676] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Payment refund */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Payment Refund</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                    </div>
+                    {/* Pending Payment */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Pending Payment</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                    </div>
+                    {/* In progress */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">In Progress</h1>
+                         <h1 className="text-3xl font-bold">200</h1>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-[#00E676] bg-opacity-20 size-5 rounded-full flex items-center justify-center">
+                            <ArrowUp className=" text-[#00E676] size-4"></ArrowUp> 
+                            </div> 
+                            <div>
+                                <p><span className="text-[#00E676] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <ScrollArea className="grid sm:grid-cols-1 sm:w-full whitespace-nowrap">
                
@@ -177,6 +242,7 @@ const OrderList = () => {
                                     <TableHead className="text-md sm:text-lg">Contact</TableHead>
                                     <TableHead className="text-md sm:text-lg">Order by</TableHead>
                                     <TableHead className="text-md sm:text-lg text-center">Cash on Delivery</TableHead>
+                                    <TableHead className="text-md sm:text-lg text-end">Status</TableHead>
                                     <TableHead className="text-md sm:text-lg text-end">Details</TableHead>
                                 </TableRow>
                             </TableHeader>
@@ -189,6 +255,8 @@ const OrderList = () => {
                                         <TableCell>{data.contact}</TableCell>
                                         <TableCell>{data.order_by}</TableCell>
                                         <TableCell className="text-center">{data.cashOn_delivary}</TableCell>
+                                        <TableCell className={`text-right ${data.status === 'active' ? 'text-[#33CF3A]' : data.status === 'deactive' ? 'text-[#f73232]' : data.status === 'pending' ? 'text-[#FAAD13]' : ''}`}
+                                         ><button className="border p-1 rounded bg-slate-100 text-xs font-bold">{data.status}</button></TableCell>
                                         <TableCell className="text-end">{data.details}</TableCell>
                                     </TableRow>
                                 ))}
