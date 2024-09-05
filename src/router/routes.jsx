@@ -1,6 +1,9 @@
 import App from "@/App";
+// import OrderDetails from "@/components/Orders/OrderDetails";
 import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
+import AnnouncementPage from "@/pages/AnnouncementPage";
+import CreateAnnouncementPage from "@/pages/CreateAnnouncementPage";
 import Dashboard from "@/pages/Dashboard";
 import OrderList from "@/pages/Order/OrderList";
 import PlaceOrder from "@/pages/Order/PlaceOrder";
@@ -42,7 +45,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin-dashboard/product/edit-product",
-        element: <EditProduct></EditProduct>
+        element: <EditProduct></EditProduct>,
       },
       {
         path: "/admin-dashboard/product/details",
@@ -52,6 +55,18 @@ export const router = createBrowserRouter([
         path: "/admin-dashboard/product/category",
         element: <ProductCategoryList></ProductCategoryList>,
       },
+      {
+        path: "/admin-dashboard/product/announcement",
+        element: <AnnouncementPage></AnnouncementPage>,
+      },
+      {
+        path: "/admin-dashboard/product/create-announcement",
+        element: <CreateAnnouncementPage></CreateAnnouncementPage>,
+      },
+      // {
+      //   path: "/admin-dashboard/product/order-details",
+      //   element: <OrderDetails/>
+      // },
     ],
   },
 ]);
