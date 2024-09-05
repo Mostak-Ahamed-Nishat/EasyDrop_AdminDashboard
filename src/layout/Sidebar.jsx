@@ -3,8 +3,9 @@ import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
 import companyIcon from '../assets/logo/companyLogo.png';
 import companyName from '../assets/logo/company-name.png';
-import { Gauge, CalendarCog, Component, ListTodo, Tags, ClipboardMinus, ClipboardCopy, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
-
+import { Gauge, CalendarCog, Component, ListTodo, Tags, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
+import { Logs } from 'lucide-react';
+import { MdOutlineCategory } from "react-icons/md";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,8 +36,8 @@ const Sidebar = () => {
       name: 'Order',
       icon: CalendarCog,
       submenu: [
-        { name: 'Team A', to: '/order/team-a', icon: ClipboardMinus},
-        { name: 'Team B', to: '/order/team-b', icon: ClipboardCopy},
+        { name: 'Place order', to: '/admin-dashboard/place-order', icon: MdOutlineCategory},
+        { name: 'Order list', to: '/admin-dashboard/order-list', icon: Logs},
       ],
     },
     {
@@ -95,13 +96,13 @@ const Sidebar = () => {
             <div key={index}>
               <NavLink
                 to={item.to || '#'}
-                className={`flex text-lg items-center justify-between py-2.5 px-4 font-semibold border rounded ${
+                className={`flex text-lg items-center justify-between bg-white py-2.5 px-4 font-semibold border rounded ${
                   !item.submenu && location.pathname === item.to ? 'bg-[#139FAD] text-white' : ''
                 }`}
                 onClick={() => handleSetActive(index, !!item.submenu)}
               >
                 <div className="flex items-center justify-center">
-                  {item.icon && <item.icon className="mr-3" />}
+                  {item.icon && <item.icon className="mr-3 size-5" />}
                   <span>{item.name}</span>
                 </div>
                 {item.submenu && (
@@ -121,7 +122,7 @@ const Sidebar = () => {
                       }`}
                       onClick={handleSubmenuClick}
                     >
-                      <subItem.icon className="mr-3 items-center justify-center " />
+                      <subItem.icon className="mr-3 items-center justify-center size-4 " />
                       <span>{subItem.name}</span>
                     </NavLink>
                   ))}

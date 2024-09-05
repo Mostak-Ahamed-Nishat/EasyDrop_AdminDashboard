@@ -2,6 +2,8 @@ import App from "@/App";
 import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
 import Dashboard from "@/pages/Dashboard";
+import OrderList from "@/pages/Order/OrderList";
+import PlaceOrder from "@/pages/Order/PlaceOrder";
 import EditProduct from "@/pages/Product/EditProduct";
 import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/dashboard",
         element: <Dashboard></Dashboard>,
+      },
+      {
+        path: "/admin-dashboard/place-order",
+        element: <PlaceOrder></PlaceOrder>
+      },
+      {
+        path: "/admin-dashboard/order-list",
+        element: <OrderList></OrderList>
       },
       {
         path: "/admin-dashboard/product/list",
