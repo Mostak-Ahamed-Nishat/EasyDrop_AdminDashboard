@@ -97,7 +97,7 @@ const Sidebar = () => {
       name: "Delivery Charge",
       icon: Truck,
       submenu: null,
-      to: "/delivery-charge",
+      to: "/admin-dashboard/delivery-charge",
     },
     {
       name: "Boost Requests",
