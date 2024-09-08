@@ -2,7 +2,7 @@ import App from "@/App";
 // import OrderDetails from "@/components/Orders/OrderDetails";
 import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
-import AnnouncementPage from "@/pages/AnnouncementPage";
+import AnnouncementPage from "@/pages/Annoucnement/AnnouncementPage";
 import CreateAnnouncementPage from "@/pages/Annoucnement/CreateAnnouncementPage";
 import Dashboard from "@/pages/Dashboard";
 import OrderList from "@/pages/Order/OrderList";
@@ -67,6 +67,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/delivery-charge",
         element: <DeliveryPage></DeliveryPage>,
+      },
+      {
+        path: "/admin-dashboard/create-announccement",
+        element: <CreateAnnouncementPage></CreateAnnouncementPage>,
       },
       // {
       //   path: "/admin-dashboard/product/order-details",

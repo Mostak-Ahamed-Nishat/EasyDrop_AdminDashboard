@@ -1,6 +1,6 @@
 import { Button } from "./ui/button";
 
-function ButtonOutline({ label, onclick }) {
+function ButtonOutline({ label, onclick,color="bg-none" }) {
   return <Button onclick={onclick}>{label}</Button>;
 }
 
