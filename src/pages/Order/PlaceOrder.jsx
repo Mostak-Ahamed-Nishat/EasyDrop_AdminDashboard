@@ -34,7 +34,7 @@ const PlaceOrder = () => {
         if (value.length > 0) {
           const filtered = products
             .filter(product => product.name.toLowerCase().includes(value.toLowerCase()))
-            .slice(0, 3);  // Limit to 3 products
+            .slice(0, 3);  // Limit 3 products
           setFilteredProducts(filtered);
         } else {
           setFilteredProducts([]);
@@ -262,36 +262,56 @@ const PlaceOrder = () => {
                         <h2 className="text-lg font-semibold mb-2">Order Summary</h2>
                         <ul>
                             {orderSummary.map((product, index) => (
-                                <li key={index} className="flex gap-5 py-3 px-2 border-b border-gray-200">
+                                <li key={index} className="flex gap-5 py-3 px-2  border-gray-200">
                                     <img src={product.img} alt={product.name} className="w-24 h-24 mr-4" />
                                     <div className="flex-1">
                                         <h3 className="font-semibold">{product.name}</h3>
-                                        <p>Price: ${product.price} x {product.quantity} = ${product.price * product.quantity}</p>
+                                        <p className="flex justify-between py-2">Price: ${product.price} x {product.quantity} <span> = {product.price * product.quantity}TK</span></p>
                                         <div className="flex gap-2 mt-2 items-center">
                                             <Button onClick={() => handleDecreaseQuantity(product.id)} size="sm" variant="outline"><Minus size={18}/></Button>
                                             <span>{product.quantity}</span>
                                             <Button onClick={() => handleIncreaseQuantity(product.id)} size="sm" variant="outline"><Plus size={18}/></Button>
                                             <Button onClick={() => handleRemoveProduct(product.id)} size="sm" variant="destructive">Remove</Button>
+                                            
                                         </div>
+                                        <p className="pt-4 flex justify-between">Delevery Charges<span> = 120TK</span></p>
+                                        <div className="flex justify-between border-t pt-2 mt-5 font-semibold text-lg">
+
+                                              <p>Total :</p>
+                                            <p>{calculateTotal()}TK</p>
+
+                                         </div>
+                                         <div className="flex justify-between border-b pb-2 mt-5 font-semibold text-lg">
+
+                                              <p>Discount :</p>
+                                            <p>300TK</p>
+
+                                         </div>
+
                                     </div>
                                 </li>
                             ))} 
                         </ul>
 
-                        {/* Total Price */}
-                        <div className="flex justify-between mt-5 font-semibold text-lg">
-                            <p>Total Price:</p>
-                            <p>${calculateTotal()}</p>
-                        </div>
+                    
+                        
+                    
+                        
                     </div>
                 )}
+
+
             </div>
         
-{/* Showing Order History Start */}
 
+
+                    <div className="flex justify-end gap-5 px-3">
+                        <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancle</Button>
+                        <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white  text-white">Place Order</Button>
+                    </div>
 
         
-                        </div>
+             </div>
                     </TabsContent>
                     <TabsContent value="mhrInternational">MHR International's information</TabsContent>
                     <TabsContent value="royalImport">Royal Import's information</TabsContent>
@@ -300,7 +320,7 @@ const PlaceOrder = () => {
 
            
             
-            {/* Showing Order History End */}
+          
             
         </section>
     );
