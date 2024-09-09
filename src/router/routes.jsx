@@ -6,7 +6,8 @@ import AnnouncementPage from "@/pages/AnnouncementPage";
 import CreateAnnouncementPage from "@/pages/CreateAnnouncementPage";
 import Dashboard from "@/pages/Dashboard";
 import OrderList from "@/pages/Order/OrderList";
-import PlaceOrder from "@/pages/Order/PlaceOrder";
+import PlaceOrder2 from "@/pages/Order/PlaceOrder2";
+
 import EditProduct from "@/pages/Product/EditProduct";
 import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
@@ -29,7 +30,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin-dashboard/place-order",
-        element: <PlaceOrder></PlaceOrder>
+        element: <PlaceOrder2></PlaceOrder2>
       },
       {
         path: "/admin-dashboard/order-list",
