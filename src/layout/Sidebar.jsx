@@ -1,12 +1,31 @@
-import { useState } from 'react';
-import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
-import { NavLink, useLocation } from 'react-router-dom';
-import companyIcon from '../assets/logo/companyLogo.png';
-import companyName from '../assets/logo/company-name.png';
-import { Gauge, CalendarCog, Component, ListTodo, Tags, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
-import { Logs } from 'lucide-react';
+import { useState } from "react";
+import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from "react-icons/fa";
+import { NavLink, useLocation } from "react-router-dom";
+import companyIcon from "../assets/logo/companyLogo.png";
+import companyName from "../assets/logo/company-name.png";
+import {
+  Gauge,
+  CalendarCog,
+  Component,
+  ListTodo,
+  Tags,
+  UserCog,
+  UserPen,
+  UserRoundSearch,
+  HandCoins,
+  Truck,
+  BadgePercent,
+  Rocket,
+  PackagePlus,
+} from "lucide-react";
+import { Logs } from "lucide-react";
 import { MdOutlineCategory } from "react-icons/md";
-import {MicVocal,ClipboardMinus,ClipboardCopy,FolderPlus,} from "lucide-react";
+import {
+  MicVocal,
+  ClipboardMinus,
+  ClipboardCopy,
+  FolderPlus,
+} from "lucide-react";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,8 +61,12 @@ const Sidebar = () => {
       name: "Order",
       icon: CalendarCog,
       submenu: [
-        { name: 'Place order', to: '/admin-dashboard/place-order', icon: MdOutlineCategory},
-        { name: 'Order list', to: '/admin-dashboard/order-list', icon: Logs},
+        {
+          name: "Place order",
+          to: "/admin-dashboard/place-order",
+          icon: MdOutlineCategory,
+        },
+        { name: "Order list", to: "/admin-dashboard/order-list", icon: Logs },
         {
           name: "Order Details",
           to: "/admin-dashboard/product/order-details",
@@ -97,7 +120,7 @@ const Sidebar = () => {
       name: "Delivery Charge",
       icon: Truck,
       submenu: null,
-      to: "/delivery-charge",
+      to: "/admin-dashboard/delivery-charge",
     },
     {
       name: "Boost Requests",
@@ -160,9 +183,11 @@ const Sidebar = () => {
           {menuItems.map((item, index) => (
             <div key={index}>
               <NavLink
-                to={item.to || '#'}
+                to={item.to || "#"}
                 className={`flex text-lg items-center justify-between bg-white py-2.5 px-4 font-semibold border rounded ${
-                  !item.submenu && location.pathname === item.to ? 'bg-[#139FAD] text-white' : ''
+                  !item.submenu && location.pathname === item.to
+                    ? "bg-[#139FAD] text-white"
+                    : ""
                 }`}
                 onClick={() => handleSetActive(index, !!item.submenu)}
               >

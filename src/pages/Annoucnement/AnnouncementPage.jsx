@@ -11,6 +11,7 @@ import {
 import { Eye, PencilLine, Trash2 } from "lucide-react";
 import ButtonFill from "@/components/ButtonFill";
 import TablePagination from "@/components/TablePagination";
+import { NavLink } from "react-router-dom";
 
 function AnnouncementPage() {
   //  ***** Pagination Logic start****
@@ -35,7 +36,9 @@ function AnnouncementPage() {
       {/* Container for controlling table width */}
       {/* <div className="w-full float-left lg:w-1/2 mx-auto"> */}
       <div className="flex justify-end">
-        <ButtonFill label="Create Announcement" />
+        <NavLink to="/admin-dashboard/create-announccement">
+          <ButtonFill label="Create Announcement" />
+        </NavLink>
       </div>
       <Table>
         <TableHeader>
