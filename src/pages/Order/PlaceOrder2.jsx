@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { 
   Menubar, 
   MenubarContent, 
@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { 
   Select, 
   SelectContent, 
+  SelectGroup, 
   SelectItem, 
   SelectTrigger, 
   SelectValue 
@@ -26,7 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Minus, Plus, Search, Trash2 } from "lucide-react";
+import { Minus, Plus, PlusCircle, Search, Trash2 } from "lucide-react";
 
 // Sample product data
         const productsData = [
@@ -43,6 +44,7 @@ function PlaceOrder2() {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [quantities, setQuantities] = useState({});
+    const [selectedVariants, setSelectedVariants] = useState({});
 
 
 
@@ -81,6 +83,29 @@ const handleRemove = (productId) => {
       return newQuantities;
     });
   };
+
+
+
+
+const handleReset = (productId) => {
+ 
+    // Reset selected variant to null or an empty string
+    setSelectedVariants(prevVariants => {
+        const newVariants = { ...prevVariants };
+        newVariants[productId] = ''; // Reset variant to empty or initial value
+        return newVariants;
+      });
+    };
+
+    const handleVariantChange = (productId, variant) => {
+        setSelectedVariants(prevVariants => ({
+          ...prevVariants,
+          [productId]: variant,
+        }));
+      };
+    
+
+
 
 
   return (
@@ -138,14 +163,16 @@ const handleRemove = (productId) => {
         <TabsContent value="EasyDrop">Make changes to your account here.</TabsContent>
 
         <TabsContent value="Sobkini">
-          {/* Search input section */}
+
+
+
+ {/* Search input section */}
       
 
-
-{/* <div className="p-5">
+<div className="pt-10">
       <div className="flex items-center mb-4">
         <div className="relative w-1/3">
-          <input
+          <Input
             type="text"
             value={searchTerm}
             onChange={handleSearch}
@@ -158,61 +185,12 @@ const handleRemove = (productId) => {
         </div>
       </div>
       {searchTerm.trim() !== '' && filteredProducts.length > 0 && (
-  <div className="border rounded-md p-2 ml-10 w-2/3 bg-gray-100 cursor-pointer">
-    <div className="flex flex-col gap-4">
-      {filteredProducts.slice(0, 3).map(product => (
-        <div key={product.id} className="p-2 border-b-2 hover:bg-gray-200">
-          <div className="flex items-start gap-5">
-            <img src={product.img} alt={product.name} className="w-14 h-14 rounded-md object-cover mb-2" />
-            
-            <div>
-              <h3 className="text-lg font-semibold">{product.name}</h3>
-              <p className="text-gray-600">Price: {product.price} Tk</p>
-              <div className="flex items-center mt-1">
-                <h2>Qty:</h2>
-                <div className='flex items-center  gap-2 ms-2 mr-10 '>
-                    <Minus size={20} className='bg-[#D9D9D9]'/> <span>1</span><Plus size={20} className='bg-[#D9D9D9]'/>
-                </div>
-              
-                <Button className="bg-[#139FAD] hover:bg-[#139FAD]">Varitent</Button>
-                <Button className="ms-2 text-xl bg-[#139FAD] hover:bg-[#139FAD]"><Plus/></Button>
-                <Button className="ms-2 text-xl bg-[#ecd5d5] text-[#D61D1D] hover:bg-[#ecd5d5]"><Trash2 /></Button>
-                <Button className="ms-2 bg-[#139FAD] hover:bg-[#139FAD]">Remove</Button>
-
-                
-                
-              </div>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div>
-)}
-
-    </div> */}
-
-
-<div className="p-5">
-      <div className="flex items-center mb-4">
-        <div className="relative w-1/3">
-          <input
-            type="text"
-            value={searchTerm}
-            onChange={handleSearch}
-            placeholder="Search products..."
-            className="w-full px-4 py-2 pl-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <div className="absolute left-2 top-2.5">
-            <Search className="w-5 h-5 text-gray-500" />
-          </div>
-        </div>
-      </div>
-      {searchTerm.trim() !== '' && filteredProducts.length > 0 && (
-        <div className="border rounded-md p-2 ml-10 w-2/5 bg-gray-100 cursor-pointer">
+        <div className="border rounded-md p-2 ml-10 w-2/4 bg-gray-100 cursor-pointer">
           <div className="flex flex-col gap-4">
             {filteredProducts.slice(0, 3).map(product => {
               const quantity = quantities[product.id] || 1;
+              const selectedVariant = selectedVariants[product.id] || '';
+
               const totalPrice = quantity * product.price;
               return (
                 <div key={product.id} className="p-2 border-b-2 hover:bg-gray-200">
@@ -224,13 +202,53 @@ const handleRemove = (productId) => {
                       <div className="flex items-center pt-3">
                         <h2 className='font-semibold'>Qty:</h2>
                         <div className='flex items-center gap-2 ml-2 mr-10'>
-                          <Minus size={20} onClick={() => handleQuantityChange(product.id, -1)} className='bg-[#D9D9D9] cursor-pointer' />
+                           <Minus size={20} onClick={() => handleQuantityChange(product.id, -1)} className='bg-[#D9D9D9] cursor-pointer' />
+                            
                           <span className='font-semibold'>{quantity}</span>
                           <Plus size={20} onClick={() => handleQuantityChange(product.id, 1)} className='bg-[#D9D9D9] cursor-pointer' />
                         </div>
-                        <Button className="ms-2  bg-[#139FAD] hover:bg-[#139FAD] px-2 py-1">Varitent</Button>
-                        <Button className="ms-2  bg-[#139FAD] hover:bg-[#139FAD]"><Plus/></Button>
-                        <Button className="ms-2  bg-[#ecd5d5] text-[#D61D1D] hover:bg-[#ecd5d5] px-2 py-1">
+                        {/* <Button className="ms-2  bg-[#139FAD] hover:bg-[#139FAD] px-2 py-1">Varitent</Button> */}
+                        <Select value={selectedVariant}
+                          onValueChange={(variant) => handleVariantChange(product.id, variant)}
+                                    
+                                    >
+                                 <SelectTrigger className="w-[100px]">
+                                  <SelectValue placeholder={selectedVariant ||"Variants"   } />
+                                </SelectTrigger>
+                                     <SelectContent>
+                                         <SelectGroup>
+                                            <SelectItem value="apple">Gray: 20</SelectItem>
+                                            <SelectItem value="banana">Blue: 20</SelectItem>
+                                             <SelectItem value="blueberry">Red: 31</SelectItem>
+          
+                                        </SelectGroup>
+                                    </SelectContent>
+                        </Select>
+
+                        {/* <Button className="ms-2  bg-[#139FAD] hover:bg-[#139FAD]"><Plus/></Button> */}
+
+
+                        <Select 
+                        
+                        
+                                    
+                                    >
+                                 <SelectTrigger className="w-[110px] ms-2">
+                                  <SelectValue placeholder="Add More" />
+                                </SelectTrigger>
+                                     <SelectContent>
+                                         <SelectGroup>
+                                            <SelectItem value="apple">Gray: 20</SelectItem>
+                                            <SelectItem value="banana">Blue: 20</SelectItem>
+                                             <SelectItem value="blueberry">Red: 31</SelectItem>
+          
+                                        </SelectGroup>
+                                    </SelectContent>
+                        </Select>
+
+                        <Button 
+                        onClick={() => handleReset(product.id)}
+                        className="ms-2  bg-[#ecd5d5] text-[#D61D1D] hover:bg-[#ecd5d5] px-2 py-1">
                           <Trash2 />
                         </Button>
                         <Button 

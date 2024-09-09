@@ -31,11 +31,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin-dashboard/place-order",
-<<<<<<< HEAD
         element: <PlaceOrder2></PlaceOrder2>
-=======
-        element: <PlaceOrder></PlaceOrder>,
->>>>>>> 4e7f11d326ab4154999544c070eaf8145fcff0fd
       },
       {
         path: "/admin-dashboard/order-list",
