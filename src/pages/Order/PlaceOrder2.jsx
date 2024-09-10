@@ -27,7 +27,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Minus, Plus, PlusCircle, Search, Trash2 } from "lucide-react";
+import { Minus, Plus, Search, Trash2 } from "lucide-react";
 
 // Sample product data
         const productsData = [
@@ -45,6 +45,7 @@ function PlaceOrder2() {
     const [filteredProducts, setFilteredProducts] = useState([]);
     const [quantities, setQuantities] = useState({});
     const [selectedVariants, setSelectedVariants] = useState({});
+    const [additionalVariants, setAdditionalVariants] = useState({}); 
 
 
 
@@ -67,8 +68,8 @@ function PlaceOrder2() {
   const handleQuantityChange = (productId, delta) => {
     setQuantities(prevQuantities => {
       const newQuantities = { ...prevQuantities };
-      newQuantities[productId] = (newQuantities[productId] || 1) + delta;
-      if (newQuantities[productId] < 1) newQuantities[productId] = 1; // Prevent negative quantity
+      newQuantities[productId] = (newQuantities[productId] || 0) + delta;
+      if (newQuantities[productId] <1) newQuantities[productId] = 1; // Prevent negative quantity
       return newQuantities;
     });
   };
@@ -85,6 +86,7 @@ const handleRemove = (productId) => {
   };
 
 
+ 
 
 
 const handleReset = (productId) => {
@@ -105,6 +107,26 @@ const handleReset = (productId) => {
       };
     
 
+
+      const handleAddMore = (productId) => {
+        setAdditionalVariants(prevAdditional => {
+          const newAdditional = { ...prevAdditional };
+          if (!newAdditional[productId]) newAdditional[productId] = [];
+          newAdditional[productId].push({ variant: '', quantity: 1 }); // Add a new empty variant
+          return newAdditional;
+        });
+      };
+
+
+      const handleAdditionalQuantityChange = (productId, index, delta) => {
+        setAdditionalVariants(prevAdditional => {
+          const newAdditional = { ...prevAdditional };
+          const currentAdditional = newAdditional[productId][index];
+          currentAdditional.quantity += delta;
+          if (currentAdditional.quantity < 1) currentAdditional.quantity = 1;
+          return newAdditional;
+        });
+      };
 
 
 
@@ -190,6 +212,8 @@ const handleReset = (productId) => {
             {filteredProducts.slice(0, 3).map(product => {
               const quantity = quantities[product.id] || 1;
               const selectedVariant = selectedVariants[product.id] || '';
+              const additionalForProduct = additionalVariants[product.id] || [];
+
 
               const totalPrice = quantity * product.price;
               return (
@@ -198,8 +222,8 @@ const handleReset = (productId) => {
                     <img src={product.img} alt={product.name} className="w-14 h-14 rounded-md object-cover mb-2" />
                     <div>
                       <h3 className="text-lg font-semibold">{product.name}</h3>
-                      <p className="text-gray-600 flex items-center justify-between font-semibold">Price: {product.price}Tk x {quantity} <span>= {totalPrice}Tk</span></p>
-                      <div className="flex items-center pt-3">
+                      <p className="text-gray-600 flex items-center justify-between font-semibold">Price: {product.price}Tk  <span>= {totalPrice}Tk</span></p>
+                      <div className="flex items-center pt-3 quantity_par">
                         <h2 className='font-semibold'>Qty:</h2>
                         <div className='flex items-center gap-2 ml-2 mr-10'>
                            <Minus size={20} onClick={() => handleQuantityChange(product.id, -1)} className='bg-[#D9D9D9] cursor-pointer' />
@@ -225,26 +249,9 @@ const handleReset = (productId) => {
                                     </SelectContent>
                         </Select>
 
-                        {/* <Button className="ms-2  bg-[#139FAD] hover:bg-[#139FAD]"><Plus/></Button> */}
-
-
-                        <Select 
-                        
-                        
-                                    
-                                    >
-                                 <SelectTrigger className="w-[110px] ms-2">
-                                  <SelectValue placeholder="Add More" />
-                                </SelectTrigger>
-                                     <SelectContent>
-                                         <SelectGroup>
-                                            <SelectItem value="apple">Gray: 20</SelectItem>
-                                            <SelectItem value="banana">Blue: 20</SelectItem>
-                                             <SelectItem value="blueberry">Red: 31</SelectItem>
-          
-                                        </SelectGroup>
-                                    </SelectContent>
-                        </Select>
+                        <Button 
+                      onClick={() => handleAddMore(product.id)}
+                        className="ms-2  bg-[#139FAD] hover:bg-[#139FAD]">Add More</Button>
 
                         <Button 
                         onClick={() => handleReset(product.id)}
@@ -256,6 +263,36 @@ const handleReset = (productId) => {
                         onClick={() => handleRemove(product.id)}
                         >Remove</Button>
                       </div>
+
+{/* after click on add more button */}
+
+                     {additionalForProduct.map((additional, index) => (
+  <div key={index} className="flex items-center pt-3 quantity_part">
+    <div className='flex items-center '>
+      <h1 className='font-semibold'>Qty:</h1>
+      <div className="flex items-center gap-2 ml-2 mr-10">
+        <Minus onClick={() => handleAdditionalQuantityChange(product.id, index, -1)} size={20} className='bg-[#D9D9D9] cursor-pointer' />
+        <span className='font-semibold'>{additional.quantity}</span>
+        <Plus onClick={() => handleAdditionalQuantityChange(product.id, index, 1)} size={20} className='bg-[#D9D9D9] cursor-pointer' />
+      </div>
+    </div>
+    <Select value={additional.variant}>
+      <SelectTrigger className="w-[100px]">
+        <SelectValue placeholder="Variants" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectGroup>
+          <SelectItem value="Gray">Gray: 20</SelectItem>
+          <SelectItem value="Blue">Blue: 30</SelectItem>
+        </SelectGroup>
+      </SelectContent>
+    </Select>
+    <button className='ml-4'><Trash2 size={18} /></button>
+    <button className='ml-4' onClick={() => handleReset(product.id)}>Reset</button>
+  </div>
+))}
+
+
                     </div>
                   </div>
                 </div>
