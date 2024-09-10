@@ -11,6 +11,9 @@ import EditProduct from "@/pages/Product/EditProduct";
 import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
 import ProductListPage from "@/pages/Product/ProductListPage";
+import UserList from "@/pages/User/UserList";
+
+
 
 import { createBrowserRouter } from "react-router-dom";
 
@@ -67,6 +70,10 @@ export const router = createBrowserRouter([
       //   path: "/admin-dashboard/product/order-details",
       //   element: <OrderDetails/>
       // },
+      {
+        path: '/admin-dashboard/user',
+        element: <UserList></UserList>
+      }
     ],
   },
 ]);

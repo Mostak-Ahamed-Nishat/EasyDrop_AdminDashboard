@@ -4,7 +4,7 @@ import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, Me
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { cn } from "@/lib/utils";
-import { ArrowUp, CalendarIcon } from "lucide-react";
+import { ArrowDown, ArrowUp, CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
@@ -83,7 +83,7 @@ const OrderList = () => {
             </div>
             {/* Card section------- */}
             <div className="p-3">
-                <h1 className="text-2xl sm:hidden font-semibold mb-4">Balance</h1>
+                <h1 className=" ml-3 text-2xl font-semibold mb-4">Order List</h1>
                 <div className="p-3 grid sm:grid-cols-12 gap-4">
                     {/* Total Order */}
                     <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
@@ -98,12 +98,7 @@ const OrderList = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Cancle Order */}
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
-                        <h1 className="text-xl font-semibold">Cancle Order</h1>
-                        <h1 className="text-3xl font-bold">200</h1>
-                    </div>
-                   {/* Shipped Order */}
+                    {/* Shipped Order */}
                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
                         <h1 className="text-xl font-semibold">Shipped Order</h1>
                          <h1 className="text-3xl font-bold">200</h1>
@@ -116,7 +111,7 @@ const OrderList = () => {
                             </div>
                         </div>
                     </div>
-                     {/* Cancle Order */}
+                     {/* pending Order */}
                      <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
                         <h1 className="text-xl font-semibold">Pending Order</h1>
                         <h1 className="text-3xl font-bold">200</h1>
@@ -134,16 +129,6 @@ const OrderList = () => {
                             </div>
                         </div>
                     </div>
-                    {/* Payment refund */}
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
-                        <h1 className="text-xl font-semibold">Payment Refund</h1>
-                        <h1 className="text-3xl font-bold">200</h1>
-                    </div>
-                    {/* Pending Payment */}
-                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
-                        <h1 className="text-xl font-semibold">Pending Payment</h1>
-                        <h1 className="text-3xl font-bold">200</h1>
-                    </div>
                     {/* In progress */}
                     <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
                         <h1 className="text-xl font-semibold">In Progress</h1>
@@ -156,6 +141,29 @@ const OrderList = () => {
                                 <p><span className="text-[#00E676] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
                             </div>
                         </div>
+                    </div>
+                    {/* Cancle Order */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Order Cancle</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                        <div className="flex items-center gap-2">
+                            <div className="bg-[#e60000] bg-opacity-20 size-5 rounded-full flex items-center justify-center">
+                            <ArrowDown className=" text-[#e60000] size-4"></ArrowDown> 
+                            </div> 
+                            <div>
+                                <p><span className="text-[#e60000] text-sm">+50%</span> <span className="text-[#949494]">From last week</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Payment refund */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Payment Refund</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
+                    </div>
+                    {/* Pending Payment */}
+                    <div className="sm:col-span-3 rounded-lg border p-4 shadow-md">
+                        <h1 className="text-xl font-semibold">Pending Payment</h1>
+                        <h1 className="text-3xl font-bold">200</h1>
                     </div>
                 </div>
                 <ScrollArea className="grid sm:grid-cols-1 sm:w-full whitespace-nowrap">

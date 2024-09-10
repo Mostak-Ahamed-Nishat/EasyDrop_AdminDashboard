@@ -3,10 +3,11 @@ import { FaBars, FaTimes, FaChevronDown, FaChevronRight } from 'react-icons/fa';
 import { NavLink, useLocation } from 'react-router-dom';
 import companyIcon from '../assets/logo/companyLogo.png';
 import companyName from '../assets/logo/company-name.png';
-import { Gauge, CalendarCog, Component, ListTodo, Tags, UserCog, UserPen,UserRoundSearch, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
+import { Gauge, CalendarCog, Component, ListTodo, Tags, HandCoins,Truck, BadgePercent, Rocket, PackagePlus} from 'lucide-react';
 import { Logs } from 'lucide-react';
 import { MdOutlineCategory } from "react-icons/md";
-import {MicVocal,ClipboardMinus,ClipboardCopy,FolderPlus,} from "lucide-react";
+import { MicVocal, ClipboardMinus, ClipboardCopy, FolderPlus, } from "lucide-react";
+import { PiUserListBold } from "react-icons/pi";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,11 +82,10 @@ const Sidebar = () => {
     },
     {
       name: "User",
-      icon: UserCog,
-      submenu: [
-        { name: "User-1", to: "/user/user-1", icon: UserPen },
-        { name: "User-2", to: "/user/user-2", icon: UserRoundSearch },
-      ],
+      to: "/admin-dashboard/user",
+      icon: PiUserListBold,
+      submenu: null,
+      
     },
     {
       name: "Payment Request",
@@ -155,14 +155,15 @@ const Sidebar = () => {
             </span>
           </NavLink>
         </div>
-
         <nav className="mt-8 space-y-2">
           {menuItems.map((item, index) => (
             <div key={index}>
               <NavLink
                 to={item.to || '#'}
-                className={`flex text-lg items-center justify-between bg-white py-2.5 px-4 font-semibold border rounded ${
-                  !item.submenu && location.pathname === item.to ? 'bg-[#139FAD] text-white' : ''
+                className={`flex text-lg items-center justify-between py-2.5 px-4 font-semibold border rounded ${
+                  location.pathname === item.to || item.submenu?.some(sub => location.pathname === sub.to)
+                    ? 'bg-[#139FAD] text-white'
+                    : 'bg-white'
                 }`}
                 onClick={() => handleSetActive(index, !!item.submenu)}
               >
@@ -172,14 +173,11 @@ const Sidebar = () => {
                 </div>
                 {item.submenu && (
                   <span>
-                    {openSubMenu === index ? (
-                      <FaChevronDown />
-                    ) : (
-                      <FaChevronRight />
-                    )}
+                    {openSubMenu === index ? <FaChevronDown /> : <FaChevronRight />}
                   </span>
                 )}
               </NavLink>
+
               {item.submenu && openSubMenu === index && (
                 <div className="pl-4">
                   {item.submenu.map((subItem, subIndex) => (
@@ -188,12 +186,12 @@ const Sidebar = () => {
                       key={subIndex}
                       className={`flex items-center py-2 px-4 rounded ${
                         location.pathname === subItem.to
-                          ? "bg-[#139FAD] text-white"
-                          : "hover:bg-gray-200"
+                          ? 'bg-[#139FAD] text-white'
+                          : 'hover:bg-gray-200'
                       }`}
                       onClick={handleSubmenuClick}
                     >
-                      <subItem.icon className="mr-3 items-center justify-center size-4 " />
+                      <subItem.icon className="mr-3 size-4" />
                       <span>{subItem.name}</span>
                     </NavLink>
                   ))}
@@ -202,6 +200,7 @@ const Sidebar = () => {
             </div>
           ))}
         </nav>
+
       </div>
     </div>
   );
