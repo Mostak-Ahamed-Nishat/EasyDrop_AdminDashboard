@@ -1,10 +1,14 @@
 import { Button } from "./ui/button";
 
-function ButtonFill({ label, onClick }) {
+function ButtonFill({
+  label,
+  onClick,
+  color = "bg-[#139FAD] hover:bg-[#139FAD]",
+}) {
   return (
     <Button
       onClick={onClick}
-      className="bg-[#139FAD] hover:bg-[#139FAD] text-white text-md font-medium"
+      className={` ${color} text-white text-md font-medium`}
     >
       {label}
     </Button>
