@@ -10,6 +10,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { IoNotifications } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import SummaryOrder from './SummaryOrder';
 
 
 const productsData = [
@@ -123,7 +124,21 @@ export default function PlaceOrder2() {
     return (mainQuantity + additionalQuantities) * product.price
   }
 
-
+// shakil vai
+  const selectedProducts = filteredProducts
+  .filter(product => 
+    quantities[product.id] > 1 || 
+    selectedVariants[product.id] || 
+    (additionalVariants[product.id] && additionalVariants[product.id].length > 0)
+  )
+  .map(product => ({
+    ...product,
+    quantity: quantities[product.id] || 1,
+    selectedVariant: selectedVariants[product.id] || '',
+    additionalVariants: additionalVariants[product.id] || [],
+    totalPrice: calculateTotalPrice(product),
+  }));
+// shakil vai
 
   return (
    <section className=''>
@@ -392,6 +407,8 @@ export default function PlaceOrder2() {
               </div>
             </div>
           </form>
+
+            <SummaryOrder products={selectedProducts}></SummaryOrder>
 
           <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
             <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
