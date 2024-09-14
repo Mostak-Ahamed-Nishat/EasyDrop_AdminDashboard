@@ -416,10 +416,19 @@ export default function PlaceOrder2() {
             
             
 
+<<<<<<< HEAD
             <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
               <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
               <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
             </div>
+=======
+            <SummaryOrder products={selectedProducts}></SummaryOrder>
+
+          <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
+            <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
+            <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
+          </div>
+>>>>>>> 2c2a08cdb0b02ddd412f59aca1fa6839a086b3f2
 
    </section>
 
