@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
@@ -122,9 +123,8 @@ export default function PlaceOrder2() {
     const additionalQuantities = (additionalVariants[product.id] || []).reduce((sum, variant) => sum + variant.quantity, 0)
     return (mainQuantity + additionalQuantities) * product.price
   }
-  // ---------------------------------------------
-  // Shakil----
-  
+
+// shakil vai
   const selectedProducts = filteredProducts
   .filter(product => 
     quantities[product.id] > 1 || 
@@ -138,14 +138,12 @@ export default function PlaceOrder2() {
     additionalVariants: additionalVariants[product.id] || [],
     totalPrice: calculateTotalPrice(product),
   }));
-
-// ---------------------------------------------
-
+// shakil vai
 
   return (
    <section className=''>
 
-      <div className="flex justify-center sm:justify-end">
+<div className="flex justify-center sm:justify-end">
         {/* Header Avatar */}
         <div className="flex items-center gap-2 justify-end p-4 lg:p-5">
           <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse">
@@ -186,236 +184,251 @@ export default function PlaceOrder2() {
           </div>
         </div>
       </div>
-      {/* -------------------------------------- */}
 
-      <Tabs defaultValue="account" className="w-full p-3">
-        <TabsList>
-          <TabsTrigger value="Easydrop">Easydrop</TabsTrigger>
-          <TabsTrigger value="Shobkini">Shobkini</TabsTrigger>
-        </TabsList>
+<Tabs defaultValue="account" className="w-full">
+  <TabsList>
+    <TabsTrigger value="Easydrop">Easydrop</TabsTrigger> 
+    <TabsTrigger value="Shobkini">Shobkini</TabsTrigger> 
+    <TabsTrigger value="MHRint">MHR International</TabsTrigger>
+  </TabsList>
 
 
-        <TabsContent value="Shobkini">
+  <TabsContent value="Shobkini">
 
-        <section>
-          <div className="md:p-4">
-            <div className="mb-4">
-              <div className="relative w-full max-w-md">
-                <Input
-                  type="text"
-                  value={searchTerm}
-                  onChange={handleSearch}
-                  placeholder="Search products..."
-                  className="w-full pl-10"
+  <section>
+     <div className="md:p-4">
+      <div className="mb-4">
+        <div className="relative w-full max-w-md">
+          <Input
+            type="text"
+            value={searchTerm}
+            onChange={handleSearch}
+            placeholder="Search products..."
+            className="w-full pl-10"
+          />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+        </div>
+      </div>
+      {searchTerm.trim() !== '' && filteredProducts.length > 0 && (
+                <div className='grid sm:grid-cols-12 gap-4'>
+                    <div className="sm:col-span-7 space-y-4">
+            {filteredProducts.map(product => {
+              const quantity = quantities[product.id] || 1
+              const selectedVariant = selectedVariants[product.id] || ''
+              const additionalForProduct = additionalVariants[product.id] || []
+              const totalPrice = calculateTotalPrice(product)
+
+              return (
+                <div key={product.id} className="border p-2 md:p-4 rounded-lg">
+                  <div className="flex items-start gap-4">
+                    <img src={product.img} alt={product.name} className="w-10 h-10 md:w-20 md:h-20 object-cover rounded" />
+                    <div className="flex-grow">
+                      <h3 className="text-lg font-semibold">{product.name}</h3>
+                      <div className='flex items-center justify-between'>
+                          <p className="text-gray-600">Price: {product.price}Tk</p>
+                          <p className="font-semibold ">Total: {totalPrice}Tk</p>
+                      </div>
+
+
+  <div className="md:flex md:items-center justify-between gap-2 mt-4">
+    {/* Quantity Section */}
+    <div className="flex items-center gap-2 w-full md:w-auto mb-4 md:mb-0">
+      <span className="font-semibold">Qty:</span>
+      <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, -1)}>
+        <Minus className="h-4 w-4" />
+      </Button>
+      <span className="font-semibold">{quantity}</span>
+      <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, 1)}>
+        <Plus className="h-4 w-4" />
+      </Button>
+    </div>
+
+    {/* Rest of the Elements */}
+    <div className="flex flex-wrap items-center gap-1 md:gap-2 w-full md:w-auto">
+    <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
+      <div className="flex flex-row items-center gap-2 w-full md:w-auto">
+        <Select value={selectedVariant} onValueChange={(variant) => handleVariantChange(product.id, variant)}>
+          <SelectTrigger className="w-[60px]  md:w-[120px]">
+            <SelectValue placeholder="Variants" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectGroup>
+              <SelectItem value="gray">Gray: 20</SelectItem>
+              <SelectItem value="blue">Blue: 20</SelectItem>
+              <SelectItem value="red">Red: 31</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
+        <Button variant="outline" size="icon" onClick={() => handleResetMainVariant(product.id)}>
+          <Trash2 className="h-4 w-4" />
+        </Button>
+        <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
+      </div>
+    </div>
+  </div>
+
+                        
+  </div>
+
+
+
+                      {additionalForProduct.map((additional, index) => (
+                        <div key={index} className="flex items-center gap-1  md:w-3/5 justify-between mt-5">
+                          <span className="font-semibold md:me-3">Qty:</span>
+                          <div className='flex items-center gap-2'>
+                          <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, -1)}>
+                            <Minus className="h-4 w-4" />
+                          </Button>
+                          <span className="font-semibold">{additional.quantity}</span>
+                          <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, 1)}>
+                            <Plus className="h-4 w-4" />
+                          </Button>
+                          <Select 
+                          
+                            value={additional.variant} 
+                            onValueChange={(variant) => handleAdditionalVariantChange(product.id, index, variant)}
+                          >
+                            <SelectTrigger className="w-[60px] md:w-[120px]">
+                              <SelectValue placeholder="Variants" />
+                            </SelectTrigger>
+                            <SelectContent>
+                              <SelectGroup>
+                                <SelectItem value="gray">Gray: 20</SelectItem>
+                                <SelectItem value="blue">Blue: 30</SelectItem>
+                                <SelectItem value="red">Red: 25</SelectItem>
+                              </SelectGroup>
+                            </SelectContent>
+                          </Select>
+                          <Button variant="outline" size="icon" onClick={() => handleRemoveAdditional(product.id, index)}>
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              )
+            })}
+                  </div>
+                  {/* Order Summary ------------------- */}
+                  <div className='sm:col-span-5'>
+                    <SummaryOrder products={selectedProducts}></SummaryOrder>
+                  </div>
+                </div>
+      )}
+    </div>
+
+    <form className="grid grid-cols-3 gap-6 p-5">
+            {/* Customer Name */}
+            <div className="flex flex-col">
+              <label htmlFor="customerName" className="mb-2 font-semibold">Customer Name</label>
+              <Input
+                type="text"
+                id="customerName"
+                placeholder="Enter customer name"
+              />
+            </div>
+
+            {/* Customer Phone Number */}
+            <div className="flex flex-col">
+              <label htmlFor="customerPhone" className="mb-2 font-semibold">Customer Phone Number</label>
+              <Input
+                type="text"
+                id="customerPhone"
+                placeholder="Enter phone number"
+              />
+            </div>
+
+            {/* District */}
+            <div className="flex flex-col">
+              <label htmlFor="district" className="mb-2 font-semibold">District</label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select District" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Jamalpur">Jamalpur</SelectItem>
+                  <SelectItem value="Dhaka">Dhaka</SelectItem>
+                  <SelectItem value="Netrokona">Netrokona</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* City */}
+            <div className="flex flex-col">
+              <label htmlFor="city" className="mb-2 font-semibold">City</label>
+              <Input
+                type="text"
+                id="city"
+                placeholder="Enter city"
+              />
+            </div>
+
+            {/* Street Address */}
+            <div className="flex flex-col">
+              <label htmlFor="streetAddress" className="mb-2 font-semibold">Street Address</label>
+              <Input
+                type="text"
+                id="streetAddress"
+                placeholder="Enter street address"
+              />
+            </div>
+
+            {/* Delivery Type */}
+            <div className="flex flex-col">
+              <label htmlFor="deliveryType" className="mb-2">Delivery Type</label>
+              <Select>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select Delivery Type" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="inside-dhaka">Inside Dhaka</SelectItem>
+                  <SelectItem value="outside-dhaka">Outside Dhaka</SelectItem>
+                  <SelectItem value="express">Express Delivery</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            {/* Note and Generated Text */}
+            <div className="col-span-2 grid grid-cols-2 gap-6">
+              {/* Note */}
+              <div className="flex flex-col">
+                <label htmlFor="note" className="mb-2 font-semibold">Note</label>
+                <Textarea
+                  id="note"
+                  placeholder="Enter notes"
                 />
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
+              </div>
+
+              {/* Generated Text */}
+              <div className="flex flex-col">
+                <label htmlFor="generatedText" className="mb-2 font-semibold">Generated Text</label>
+                <Textarea
+                  id="generatedText"
+                  placeholder="Generated text will appear here"
+                />
               </div>
             </div>
-            {searchTerm.trim() !== '' && filteredProducts.length > 0 && (
-              <div className="space-y-4">
-                {filteredProducts.map(product => {
-                  const quantity = quantities[product.id] || 1
-                  const selectedVariant = selectedVariants[product.id] || ''
-                  const additionalForProduct = additionalVariants[product.id] || []
-                  const totalPrice = calculateTotalPrice(product)
-
-                  return (
-                    <div key={product.id} className="border p-4 md:w-3/5 rounded-lg">
-                      <div className="flex items-start gap-4">
-                        <img src={product.img} alt={product.name} className="w-10 h-10 md:w-20 md:h-20 object-cover rounded" />
-                        <div className="flex-grow">
-                          <h3 className="text-lg font-semibold">{product.name}</h3>
-                          <div className='flex items-center justify-between'>
-                              <p className="text-gray-600">Price: {product.price}Tk</p>
-                              <p className="font-semibold">Total: {totalPrice}Tk</p>
-                          </div>
-                          <div className="md:flex md:items-center justify-between gap-2 mt-4">
-                            {/* Quantity Section */}
-                            <div className="flex items-center gap-2 w-full md:w-auto mb-4 md:mb-0">
-                              <span className="font-semibold">Qty:</span>
-                              <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, -1)}>
-                                <Minus className="h-4 w-4" />
-                              </Button>
-                              <span className="font-semibold">{quantity}</span>
-                              <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, 1)}>
-                                <Plus className="h-4 w-4" />
-                              </Button>
-                            </div>
-
-                            {/* Rest of the Elements */}
-                            <div className="flex flex-wrap items-center gap-1 md:gap-2 w-full md:w-auto">
-                            <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
-                              <div className="flex flex-row items-center gap-2 w-full md:w-auto">
-                                <Select value={selectedVariant} onValueChange={(variant) => handleVariantChange(product.id, variant)}>
-                                  <SelectTrigger className="w-[60px]  md:w-[120px]">
-                                    <SelectValue placeholder="Variants" />
-                                  </SelectTrigger>
-                                  <SelectContent>
-                                    <SelectGroup>
-                                      <SelectItem value="gray">Gray: 20</SelectItem>
-                                      <SelectItem value="blue">Blue: 20</SelectItem>
-                                      <SelectItem value="red">Red: 31</SelectItem>
-                                    </SelectGroup>
-                                  </SelectContent>
-                                </Select>
-
-                                <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
-                                <Button variant="outline" size="icon" onClick={() => handleResetMainVariant(product.id)}>
-                                  <Trash2 className="h-4 w-4" />
-                                </Button>
-                                <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                          {additionalForProduct.map((additional, index) => (
-                            <div key={index} className="flex items-center w-3/5 justify-between  gap-2  mt-2">
-                              <span className="font-semibold me-3">Qty:</span>
-                              <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, -1)}>
-                                <Minus className="h-4 w-4" />
-                              </Button>
-                              <span className="font-semibold px-3">{additional.quantity}</span>
-                              <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, 1)}>
-                                <Plus className="h-4 w-4" />
-                              </Button>
-                              <Select 
-                              
-                                value={additional.variant} 
-                                onValueChange={(variant) => handleAdditionalVariantChange(product.id, index, variant)}
-                              >
-                                <SelectTrigger className="w-[120px]">
-                                  <SelectValue placeholder="Variants" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  <SelectGroup>
-                                    <SelectItem value="gray">Gray: 20</SelectItem>
-                                    <SelectItem value="blue">Blue: 30</SelectItem>
-                                    <SelectItem value="red">Red: 25</SelectItem>
-                                  </SelectGroup>
-                                </SelectContent>
-                              </Select>
-                              <Button variant="outline" size="icon" onClick={() => handleRemoveAdditional(product.id, index)}>
-                                <Trash2 className="h-4 w-4" />
-                              </Button>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            )}
-          </div>
-
-          <form className="grid grid-cols-3 gap-6 p-5">
-                  {/* Customer Name */}
-                  <div className="flex flex-col">
-                    <label htmlFor="customerName" className="mb-2 font-semibold">Customer Name</label>
-                    <Input
-                      type="text"
-                      id="customerName"
-                      placeholder="Enter customer name"
-                    />
-                  </div>
-
-                  {/* Customer Phone Number */}
-                  <div className="flex flex-col">
-                    <label htmlFor="customerPhone" className="mb-2 font-semibold">Customer Phone Number</label>
-                    <Input
-                      type="text"
-                      id="customerPhone"
-                      placeholder="Enter phone number"
-                    />
-                  </div>
-
-                  {/* District */}
-                  <div className="flex flex-col">
-                    <label htmlFor="district" className="mb-2 font-semibold">District</label>
-                    <Select>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select District" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="Jamalpur">Jamalpur</SelectItem>
-                        <SelectItem value="Dhaka">Dhaka</SelectItem>
-                        <SelectItem value="Netrokona">Netrokona</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* City */}
-                  <div className="flex flex-col">
-                    <label htmlFor="city" className="mb-2 font-semibold">City</label>
-                    <Input
-                      type="text"
-                      id="city"
-                      placeholder="Enter city"
-                    />
-                  </div>
-
-                  {/* Street Address */}
-                  <div className="flex flex-col">
-                    <label htmlFor="streetAddress" className="mb-2 font-semibold">Street Address</label>
-                    <Input
-                      type="text"
-                      id="streetAddress"
-                      placeholder="Enter street address"
-                    />
-                  </div>
-
-                  {/* Delivery Type */}
-                  <div className="flex flex-col">
-                    <label htmlFor="deliveryType" className="mb-2">Delivery Type</label>
-                    <Select>
-                      <SelectTrigger className="w-full">
-                        <SelectValue placeholder="Select Delivery Type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="inside-dhaka">Inside Dhaka</SelectItem>
-                        <SelectItem value="outside-dhaka">Outside Dhaka</SelectItem>
-                        <SelectItem value="express">Express Delivery</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-
-                  {/* Note and Generated Text */}
-                  <div className="col-span-2 grid grid-cols-2 gap-6">
-                    {/* Note */}
-                    <div className="flex flex-col">
-                      <label htmlFor="note" className="mb-2 font-semibold">Note</label>
-                      <Textarea
-                        id="note"
-                        placeholder="Enter notes"
-                      />
-                    </div>
-
-                    {/* Generated Text */}
-                    <div className="flex flex-col">
-                      <label htmlFor="generatedText" className="mb-2 font-semibold">Generated Text</label>
-                      <Textarea
-                        id="generatedText"
-                        placeholder="Generated text will appear here"
-                      />
-                    </div>
-                  </div>
             </form>
             
-                  {/* order summary---------------shakil------------- */}
-                  <SummaryOrder  products={selectedProducts} ></SummaryOrder>
+            
 
-                <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
-                  <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
-                  <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
-                </div>
+            <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
+              <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
+              <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
+            </div>
 
-        </section>
+   </section>
 
-        </TabsContent>
+  </TabsContent>
 
 
-        <TabsContent value="password">Change your password here.</TabsContent>
-      </Tabs>
+  <TabsContent value="Easydrop">EasyDrop info</TabsContent>
+  <TabsContent value="MHRint">MHR info</TabsContent>
+</Tabs>
 
     
 

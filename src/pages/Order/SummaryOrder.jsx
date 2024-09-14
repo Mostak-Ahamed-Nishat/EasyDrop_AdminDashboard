@@ -5,7 +5,7 @@ const SummaryOrder = ({ products }) => {
     // Sample data for products
   
     return  (
-      <div className="p-4">
+      <div className="">
       <h2 className="text-xl font-semibold">Order Summary</h2>
       {products.length === 0 ? (
         <p>No products selected</p>
