@@ -325,98 +325,106 @@ export default function PlaceOrder2() {
       )}
     </div>
 
-    <form className="grid grid-cols-3 gap-6 p-5">
-            {/* Customer Name */}
-            <div className="flex flex-col">
-              <label htmlFor="customerName" className="mb-2 font-semibold">Customer Name</label>
-              <Input
-                type="text"
-                id="customerName"
-                placeholder="Enter customer name"
-              />
-            </div>
+    <form className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 p-5">
+  {/* Customer Name */}
+  <div className="flex flex-col">
+    <label htmlFor="customerName" className="mb-2 font-semibold">Customer Name</label>
+    <Input
+      type="text"
+      id="customerName"
+      placeholder="Enter customer name"
+      className="w-full"
+    />
+  </div>
 
-            {/* Customer Phone Number */}
-            <div className="flex flex-col">
-              <label htmlFor="customerPhone" className="mb-2 font-semibold">Customer Phone Number</label>
-              <Input
-                type="text"
-                id="customerPhone"
-                placeholder="Enter phone number"
-              />
-            </div>
+  {/* Customer Phone Number */}
+  <div className="flex flex-col">
+    <label htmlFor="customerPhone" className="mb-2 font-semibold">Customer Phone Number</label>
+    <Input
+      type="text"
+      id="customerPhone"
+      placeholder="Enter phone number"
+      className="w-full"
+    />
+  </div>
 
-            {/* District */}
-            <div className="flex flex-col">
-              <label htmlFor="district" className="mb-2 font-semibold">District</label>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select District" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Jamalpur">Jamalpur</SelectItem>
-                  <SelectItem value="Dhaka">Dhaka</SelectItem>
-                  <SelectItem value="Netrokona">Netrokona</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+  {/* District */}
+  <div className="flex flex-col">
+    <label htmlFor="district" className="mb-2 font-semibold">District</label>
+    <Select className="w-full">
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select District" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="Jamalpur">Jamalpur</SelectItem>
+        <SelectItem value="Dhaka">Dhaka</SelectItem>
+        <SelectItem value="Netrokona">Netrokona</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
 
-            {/* City */}
-            <div className="flex flex-col">
-              <label htmlFor="city" className="mb-2 font-semibold">City</label>
-              <Input
-                type="text"
-                id="city"
-                placeholder="Enter city"
-              />
-            </div>
+  {/* City */}
+  <div className="flex flex-col">
+    <label htmlFor="city" className="mb-2 font-semibold">City</label>
+    <Input
+      type="text"
+      id="city"
+      placeholder="Enter city"
+      className="w-full"
+    />
+  </div>
 
-            {/* Street Address */}
-            <div className="flex flex-col">
-              <label htmlFor="streetAddress" className="mb-2 font-semibold">Street Address</label>
-              <Input
-                type="text"
-                id="streetAddress"
-                placeholder="Enter street address"
-              />
-            </div>
+  {/* Street Address */}
+  <div className="flex flex-col">
+    <label htmlFor="streetAddress" className="mb-2 font-semibold">Street Address</label>
+    <Input
+      type="text"
+      id="streetAddress"
+      placeholder="Enter street address"
+      className="w-full"
+    />
+  </div>
 
-            {/* Delivery Type */}
-            <div className="flex flex-col">
-              <label htmlFor="deliveryType" className="mb-2">Delivery Type</label>
-              <Select>
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Select Delivery Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="inside-dhaka">Inside Dhaka</SelectItem>
-                  <SelectItem value="outside-dhaka">Outside Dhaka</SelectItem>
-                  <SelectItem value="express">Express Delivery</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+  {/* Delivery Type */}
+  <div className="flex flex-col">
+    <label htmlFor="deliveryType" className="mb-2">Delivery Type</label>
+    <Select className="w-full">
+      <SelectTrigger className="w-full">
+        <SelectValue placeholder="Select Delivery Type" />
+      </SelectTrigger>
+      <SelectContent>
+        <SelectItem value="inside-dhaka">Inside Dhaka</SelectItem>
+        <SelectItem value="outside-dhaka">Outside Dhaka</SelectItem>
+        <SelectItem value="express">Express Delivery</SelectItem>
+      </SelectContent>
+    </Select>
+  </div>
 
-            {/* Note and Generated Text */}
-            <div className="col-span-2 grid grid-cols-2 gap-6">
-              {/* Note */}
-              <div className="flex flex-col">
-                <label htmlFor="note" className="mb-2 font-semibold">Note</label>
-                <Textarea
-                  id="note"
-                  placeholder="Enter notes"
-                />
-              </div>
+  {/* Note and Generated Text */}
+  <div className="col-span-1 sm:col-span-2 lg:col-span-2 flex gap-6">
+    {/* Note */}
+    <div className="flex-1 flex flex-col">
+      <label htmlFor="note" className="mb-2 font-semibold">Note</label>
+      <Textarea
+        id="note"
+        placeholder="Enter notes"
+        className="w-full"
+      />
+    </div>
 
-              {/* Generated Text */}
-              <div className="flex flex-col">
-                <label htmlFor="generatedText" className="mb-2 font-semibold">Generated Text</label>
-                <Textarea
-                  id="generatedText"
-                  placeholder="Generated text will appear here"
-                />
-              </div>
-            </div>
-            </form>
+    {/* Generated Text */}
+    <div className="flex-1 flex flex-col">
+      <label htmlFor="generatedText" className="mb-2 font-semibold">Generated Text</label>
+      <Textarea
+        id="generatedText"
+        placeholder="Generated text will appear here"
+        className="w-full"
+      />
+    </div>
+  </div>
+</form>
+
+
             
             
 
