@@ -211,6 +211,7 @@ export default function PlaceOrder2() {
       </div>
       {searchTerm.trim() !== '' && filteredProducts.length > 0 && (
                 <div className='grid sm:grid-cols-12 gap-4'>
+                  {/* product searched----- */}
                     <div className="sm:col-span-7 space-y-4">
             {filteredProducts.map(product => {
               const quantity = quantities[product.id] || 1
@@ -223,24 +224,26 @@ export default function PlaceOrder2() {
                   <div className="flex items-start gap-4">
                     <img src={product.img} alt={product.name} className="w-10 h-10 md:w-20 md:h-20 object-cover rounded" />
                     <div className="flex-grow">
-                      <h3 className="text-lg font-semibold">{product.name}</h3>
-                      <div className='flex items-center justify-between'>
-                          <p className="text-gray-600">Price: {product.price}Tk</p>
-                          <p className="font-semibold ">Total: {totalPrice}Tk</p>
+                      <h3 className="text-xl font-semibold">{product.name}</h3>
+                      <div className='flex items-center justify-between mr-14'>
+                          <p className="text-gray-500 font-semibold text-xs">Price: {product.price}Tk</p>
+                          <p className="font-semibold md:-mr-12 mr-2 ">Total: {totalPrice}Tk</p>
                       </div>
 
 
-  <div className="md:flex md:items-center justify-between gap-2 mt-4">
+  <div className="flex flex-col items-start justify-between gap-2 mt-10 md:flex-row md:items-center -ml-10">
     {/* Quantity Section */}
-    <div className="flex items-center gap-2 w-full md:w-auto mb-4 md:mb-0">
+    <div className="flex items-center gap-4 w-full md:w-auto mb-4 md:mb-0 md:ml-8 ml-2">
       <span className="font-semibold">Qty:</span>
-      <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, -1)}>
-        <Minus className="h-4 w-4" />
-      </Button>
-      <span className="font-semibold">{quantity}</span>
-      <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, 1)}>
-        <Plus className="h-4 w-4" />
-      </Button>
+        <div className='md:ml-1 md:space-x-4 space-x-3'>
+          <Button variant="outline"  size="icon" onClick={() => handleQuantityChange(product.id, -1)}>
+          <Minus className="h-4 w-4" />
+        </Button>
+        <span className="font-semibold">{quantity}</span>
+        <Button variant="outline" size="icon" onClick={() => handleQuantityChange(product.id, 1)}>
+          <Plus className="h-4 w-4" />
+        </Button>                  
+      </div>
     </div>
 
     {/* Rest of the Elements */}
@@ -248,7 +251,7 @@ export default function PlaceOrder2() {
     <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
       <div className="flex flex-row items-center gap-2 w-full md:w-auto">
         <Select value={selectedVariant} onValueChange={(variant) => handleVariantChange(product.id, variant)}>
-          <SelectTrigger className="w-[60px]  md:w-[120px]">
+          <SelectTrigger className="w-[100px]  md:w-[120px]">
             <SelectValue placeholder="Variants" />
           </SelectTrigger>
           <SelectContent>
@@ -260,11 +263,11 @@ export default function PlaceOrder2() {
           </SelectContent>
         </Select>
 
-        <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
-        <Button variant="outline" size="icon" onClick={() => handleResetMainVariant(product.id)}>
+        <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-[#139FAD] text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
+        <Button variant="outline" size="icon" className="hover:bg-[#FDEFEF] bg-teal-50 hover:text-red-500 text-black" onClick={() => handleResetMainVariant(product.id)}>
           <Trash2 className="h-4 w-4" />
         </Button>
-        <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
+        <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-[#139FAD] text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
       </div>
     </div>
   </div>
@@ -275,33 +278,34 @@ export default function PlaceOrder2() {
 
 
                       {additionalForProduct.map((additional, index) => (
-                        <div key={index} className="flex items-center gap-1  md:w-3/5 justify-between mt-5">
-                          <span className="font-semibold md:me-3">Qty:</span>
-                          <div className='flex items-center gap-2'>
+                        <div key={index} className="flex items-center gap-2 md:w-3/5 justify-between mt-5 -ml-2">
+                          <span className="font-semibold md:mr-3 md:-ml-0 -ml-6">Qty:</span>
+                          <div className='flex items-center md:gap-4 gap-2 mr-14 mr:mr-0'>
                           <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, -1)}>
                             <Minus className="h-4 w-4" />
                           </Button>
                           <span className="font-semibold">{additional.quantity}</span>
-                          <Button variant="outline" size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, 1)}>
+                          <Button variant="outline" className='md:mr-14' size="icon" onClick={() => handleAdditionalQuantityChange(product.id, index, 1)}>
                             <Plus className="h-4 w-4" />
                           </Button>
-                          <Select 
-                          
-                            value={additional.variant} 
-                            onValueChange={(variant) => handleAdditionalVariantChange(product.id, index, variant)}
-                          >
-                            <SelectTrigger className="w-[60px] md:w-[120px]">
-                              <SelectValue placeholder="Variants" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectGroup>
-                                <SelectItem value="gray">Gray: 20</SelectItem>
-                                <SelectItem value="blue">Blue: 30</SelectItem>
-                                <SelectItem value="red">Red: 25</SelectItem>
-                              </SelectGroup>
-                            </SelectContent>
-                          </Select>
-                          <Button variant="outline" size="icon" onClick={() => handleRemoveAdditional(product.id, index)}>
+                            <div className='md:-ml-8 ml-0'>
+                              <Select 
+                              value={additional.variant} 
+                              onValueChange={(variant) => handleAdditionalVariantChange(product.id, index, variant)}
+                            >
+                              <SelectTrigger className="w-[90px] md:w-[120px]">
+                                <SelectValue placeholder="Variants" />
+                              </SelectTrigger>
+                              <SelectContent>
+                                <SelectGroup>
+                                  <SelectItem value="gray">Gray: 20</SelectItem>
+                                  <SelectItem value="blue">Blue: 30</SelectItem>
+                                  <SelectItem value="red">Red: 25</SelectItem>
+                                </SelectGroup>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <Button variant="outline" className='md:-ml-2 ml-0 hover:bg-[#FDEFEF] bg-teal-50 hover:text-red-500 text-black' size="icon" onClick={() => handleRemoveAdditional(product.id, index)}>
                             <Trash2 className="h-4 w-4" />
                           </Button>
                           </div>
@@ -313,9 +317,9 @@ export default function PlaceOrder2() {
               )
             })}
                   </div>
-                  {/* Order Summary ------------------- */}
+                  {/* Order Summary -------------------NOTE- productData use for img only in this case */}
                   <div className='sm:col-span-5'>
-                    <SummaryOrder products={selectedProducts}></SummaryOrder>
+                    <SummaryOrder products={selectedProducts} productsData={productsData}></SummaryOrder>
                   </div>
                 </div>
       )}
@@ -416,19 +420,10 @@ export default function PlaceOrder2() {
             
             
 
-<<<<<<< HEAD
             <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
               <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
               <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
             </div>
-=======
-            <SummaryOrder products={selectedProducts}></SummaryOrder>
-
-          <div className="flex justify-end gap-5 px-3 pt-20 pb-8">
-            <Button variant="outline" className="px-10 text-gray-600 hover:text-gray-600">Cancel</Button>
-            <Button variant="outline" className="px-5 bg-[#139FAD] hover:bg-[#139FAD] hover:text-white text-white">Place Order</Button>
-          </div>
->>>>>>> 2c2a08cdb0b02ddd412f59aca1fa6839a086b3f2
 
    </section>
 
