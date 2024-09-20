@@ -259,11 +259,11 @@ export default function PlaceOrder2() {
         </SelectContent>
       </Select>
 
-      <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
+      <button className=" btn w-[65px] md:w-[100px] text-xs  border py-3 bg-[#139FAD] text-white font-semibold rounded-md" onClick={() => handleAddMore(product.id)}>Add More</button>
       <Button variant="outline" size="icon" onClick={() => handleResetMainVariant(product.id)}>
-        <Trash2 className="h-4 w-4" />
+        <Trash2 className="h-4 w-4 text-red-500" />
       </Button>
-      <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-black text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
+      <button className=" btn w-[63px] md:w-[100px] text-xs  border py-3 bg-[#139FAD] text-white font-semibold rounded-md" onClick={() => handleRemove(product.id)}>Remove</button>
     </div>
   </div>
 </div>
