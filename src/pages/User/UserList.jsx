@@ -156,8 +156,7 @@ const UserList = () => {
                                         </Select>
                                      </TableCell>
                                     
-                                    {/* <TableCell className={`text-right ${data.status === 'active' ? 'text-[#33CF3A]' : data.status === 'deactive' ? 'text-[#f73232]' : data.status === 'pending' ? 'text-[#FAAD13]' : ''}`}
-                                     ><button className="border p-1 rounded bg-slate-100 text-xs font-bold">{data.status}</button></TableCell> */}
+                                  {/* Dialog / popup */}
                                     <TableCell className="text-end"><DialogForUserListAdmin></DialogForUserListAdmin></TableCell>
                                 </TableRow>
                             ))}

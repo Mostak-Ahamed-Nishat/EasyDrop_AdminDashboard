@@ -4,10 +4,8 @@ import AdminDashboard from "@/layout/AdminDashboard";
 import AddProduct from "@/pages/AddProduct";
 import AnnouncementPage from "@/pages/Annoucnement/AnnouncementPage";
 import CreateAnnouncementPage from "@/pages/Annoucnement/CreateAnnouncementPage";
-import Dashboard from "@/pages/Dashboard";
 import OrderList from "@/pages/Order/OrderList";
 import PlaceOrder2 from "@/pages/Order/PlaceOrder2";
-
 import EditProduct from "@/pages/Product/EditProduct";
 import ProductCategoryList from "@/pages/Product/ProductCategoryList";
 import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
@@ -18,6 +16,8 @@ import UserList from "@/pages/User/UserList";
 
 import { createBrowserRouter } from "react-router-dom";
 import DeliveryPage from "@/pages/DeliveryPage";
+import Home from "@/pages/Admin Dashboard/Home";
+import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
 
 export const router = createBrowserRouter([
   {
@@ -29,8 +29,8 @@ export const router = createBrowserRouter([
     element: <AdminDashboard></AdminDashboard>,
     children: [
       {
-        path: "/admin-dashboard/dashboard",
-        element: <Dashboard></Dashboard>,
+        path: "/admin-dashboard/home",
+        element: <Home></Home>,
       },
       {
         path: "/admin-dashboard/place-order",
@@ -83,6 +83,10 @@ export const router = createBrowserRouter([
       {
         path: '/admin-dashboard/user',
         element: <UserList></UserList>
+      },
+      {
+        path: "/admin-dashboard/promo-code",
+        element:<PromoCodeOne/>
       }
     ],
   },
