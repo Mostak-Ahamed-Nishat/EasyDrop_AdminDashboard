@@ -4,12 +4,12 @@ import { IoNotifications } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight } from 'lucide-react';
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, Legend, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { NavLink } from "react-router-dom";
 import { totalRevenue } from "@/api/dashboard/totalRevenue";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { UserRound } from 'lucide-react';
-
+import topSellerImg from '../../assets/images/user/116808961_2481364412168538_151698124801764199_n.jpg'
 
 
 const Home = () => {
@@ -233,7 +233,7 @@ const Home = () => {
                                 </TableRow>
                             </TableHeader>
                             <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
+                                <TableCell className="py-1 text-xs">Shakil Ahmed</TableCell>
                                 <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
                                     05
                                 </TableCell>
@@ -426,7 +426,60 @@ const Home = () => {
                             <Bar dataKey="uv" fill="#0e6f78" activeBar={<Rectangle fill="gold" stroke="purple" />} />
                             </BarChart>
                         </ResponsiveContainer>
+                </div>
+                {/* Top Seller -------- */}
+                <div className="sm:col-span-4 rounded-lg border p-4 shadow-md max-w-[302px] sm:max-w-full">
+                        {/* heading */}
+                        <div className="flex justify-between items-center mb-1">
+                        <h1 className="font-bold sm:font-semibold text-md sm:text-2xl">Top Seller</h1>
+                        <Select>
+                            <SelectTrigger className="w-[90px] sm:w-[150px]">
+                                <SelectValue placeholder="Month" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                <SelectLabel>Months</SelectLabel>
+                                <SelectItem value="apple">Jan - April</SelectItem>
+                                <SelectItem value="pineapple">May- Aug</SelectItem>
+                                <SelectItem value="mango">Sep - Dec</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
                     </div>
+                         {/* product here----------------- */}
+                    <div>
+                        <Table>
+                            <TableHeader>
+                            <TableRow>
+                                    <TableHead className="w-[120px] text-xs py-1">Image</TableHead>
+                                    <TableHead className=" text-xs py-1">Name</TableHead>
+                                <TableHead className=" text-xs text-end py-1">Amount</TableHead>
+                            </TableRow>
+                            </TableHeader>
+                            <TableBody>
+                                <TableRow>
+                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
+                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
+                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
+                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
+                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
+                                </TableRow>
+                                <TableRow>
+                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
+                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
+                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
+                                </TableRow>
+                            </TableBody>
+                        </Table>
+                        <div>
+                            
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </>
     );
