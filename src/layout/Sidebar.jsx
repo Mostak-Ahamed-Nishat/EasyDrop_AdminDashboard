@@ -38,7 +38,7 @@ const Sidebar = () => {
       name: "Dashboard",
       icon: Gauge,
       submenu: null,
-      to: "/admin-dashboard/dashboard",
+      to: "/admin-dashboard/home",
     },
     {
       name: "Order",
