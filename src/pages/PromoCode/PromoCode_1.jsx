@@ -1,5 +1,7 @@
 import { promoDataApi as data } from "@/api/PromoDataApi";
 import TablePagination from "@/components/TablePagination";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 import {
   Table,
@@ -11,32 +13,26 @@ import {
 } from "@/components/ui/table";
 import {
   Tooltip,
-  TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
-import { PencilLine, Trash2 } from "lucide-react";
+import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
 import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function PromoCodeOne() {
-  const navigate = useNavigate();
 
-  const goToProductEditPage = () => {
-    navigate("/admin-dashboard/product/edit-product");
-  };
+ 
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
-  // Get data for the current page
   const currentData = data.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
-  // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
@@ -44,8 +40,23 @@ function PromoCodeOne() {
   console.log(currentData);
 
   return (
-    <>
+    <div className=" px-5">
       {/* Main Table Content */}
+      <div className="grid grid-cols-2 py-10">
+       
+        <div className="flex items-center gap-2 col-span-1 ">
+          <Input className="py-5 md:w-2/3" placeholder="Search" />
+          <div className="bg-[#139FAD] p-2 rounded-md"> 
+           <Filter className=" text-white"  />
+          </div>
+        </div>
+       
+        <div className="flex justify-end">
+           <Button className="col-span-1 bg-[#139FAD]">Add Code</Button>
+      </div>
+      </div>
+
+
       <Table>
         <TableHeader>
           <TableRow>
@@ -74,26 +85,33 @@ function PromoCodeOne() {
                       <TooltipTrigger>
                         {/* navigate to the product edit page */}
 
-                        <PencilLine
-                          onClick={goToProductEditPage}
-                          className="bg-[#b5d0f0] rounded-sm py-[5px] px-[8px]"
+                        <Eye 
+                        className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
                           size={30}
                         />
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Edit Product</p>
-                      </TooltipContent>
+                 
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger>
                         <Trash2
-                          className="bg-[#f0c6b5] rounded-sm py-[5px] px-[8px]"
+                          className="bg-[#FDEFEF] text-red-500 rounded-sm py-[5px] px-[8px]"
                           size={30}
                         />
                       </TooltipTrigger>
-                      <TooltipContent>
-                        <p>Delete Product</p>
-                      </TooltipContent>
+                     
+                    </Tooltip>
+
+                    <Tooltip>
+                      <TooltipTrigger>
+                        <Link to={`/admin-dashboard/promo-code/${product.id}`}>
+                        <Ellipsis
+                          className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
+                          size={30}
+                        />
+                        </Link>
+                      </TooltipTrigger>
+                     
                     </Tooltip>
                   </TooltipProvider>
                 </div>
@@ -109,7 +127,7 @@ function PromoCodeOne() {
         handlePageChange={handlePageChange}
         maxPageNumbersToShow={3}
       />
-    </>
+    </div>
   );
 }
 
