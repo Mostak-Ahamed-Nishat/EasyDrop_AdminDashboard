@@ -19,6 +19,7 @@ import DeliveryPage from "@/pages/DeliveryPage";
 import Home from "@/pages/Admin Dashboard/Home";
 import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
+import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
 
 export const router = createBrowserRouter([
   {
@@ -85,6 +86,8 @@ export const router = createBrowserRouter([
         path: '/admin-dashboard/user',
         element: <UserList></UserList>
       },
+
+      //bijoy start
       {
         path: "/admin-dashboard/promo-code",
         element:<PromoCodeOne/>
@@ -92,7 +95,13 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/promo-code/:id",
         element:<SinglePromoDetails/>
+      }, 
+      {
+        path: "/admin-dashboard/addpromo-code",
+        element: <AddPromoCode/>
       }
+
+      //bijoy end
     ],
   },
 ]);
