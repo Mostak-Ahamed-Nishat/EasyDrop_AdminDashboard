@@ -92,8 +92,9 @@ export const router = createBrowserRouter([
         path: "/admin-dashboard/promo-code",
         element:<PromoCodeOne/>
       },
+     
       {
-        path: "/admin-dashboard/promo-code/:id",
+        path: "/admin-dashboard/promo-code/:code",
         element:<SinglePromoDetails/>
       }, 
       {

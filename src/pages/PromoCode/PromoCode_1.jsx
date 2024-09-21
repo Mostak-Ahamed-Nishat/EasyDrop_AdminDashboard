@@ -51,9 +51,9 @@ function PromoCodeOne() {
           </div>
         </div>
        
-        <div className="flex justify-end">
-           <Button className="col-span-1 bg-[#139FAD]">Add Code</Button>
-      </div>
+        <Link  to='/admin-dashboard/addpromo-code'  className="flex justify-end">
+           <Button className="col-span-1  bg-[#139FAD]">Add Code</Button>
+      </Link>
       </div>
 
 
@@ -104,7 +104,7 @@ function PromoCodeOne() {
 
                     <Tooltip>
                       <TooltipTrigger>
-                        <Link to={`/admin-dashboard/promo-code/${product.id}`}>
+                        <Link to={`/admin-dashboard/promo-code/${product.promo_code}`}>
                         <Ellipsis
                           className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
                           size={30}
