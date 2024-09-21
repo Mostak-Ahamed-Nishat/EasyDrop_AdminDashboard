@@ -20,14 +20,14 @@ export default function DatePickerWithRange({ className }) {
   })
 
   return (
-    <div className={cn(" gap-2", className)}>
+    <div className={cn("", className)}>
       <Popover className="">
         <PopoverTrigger asChild>
           <Button
             id="date"
             variant={"outline"}
             className={cn(
-              "justify-start text-left font-normal py-6",
+              "justify-start text-left font-normal py-6 w-full",
               !date && "text-muted-foreground"
             )}
           >
