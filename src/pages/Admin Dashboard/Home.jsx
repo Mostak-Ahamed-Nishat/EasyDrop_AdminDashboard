@@ -4,13 +4,46 @@ import { IoNotifications } from "react-icons/io5";
 import { IoIosArrowDown } from "react-icons/io";
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight } from 'lucide-react';
-import { Area, AreaChart, Bar, BarChart, CartesianGrid, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Area, AreaChart, Bar, BarChart, CartesianGrid, Cell, Legend, Pie, PieChart, Rectangle, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { NavLink } from "react-router-dom";
 import { totalRevenue } from "@/api/dashboard/totalRevenue";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { UserRound } from 'lucide-react';
 import topSellerImg from '../../assets/images/user/116808961_2481364412168538_151698124801764199_n.jpg'
+import { COLORS, renderCustomizedLabel, salesByCategory, style } from "@/api/dashboard/salesByCategory";
+import DialogForVendor from "./DialogForVendor";
+import InvestorProductDialog from "./InvestorProductDialog";
+import DialogForInvestorEquity from "./DialogForInvestorEquity";
 
+const vendorData = [
+    { shopName: 'EasyDrop', details: '..' },
+    { shopName: 'ShopTwo', details: '..' },
+    { shopName: 'ShopThree', details: '..' },
+    { shopName: 'ShopFour', details: '..' },
+    { shopName: 'ShopFive', details: '..' },
+  ];
+  const investorProductData = [
+    { name: 'Shakil Ahmed', productQty: 5, amount: '50,000', details: '...' },
+    { name: 'Shakil', productQty: 5, amount: '50,000', details: '...' },
+    { name: 'Shakil', productQty: 5, amount: '50,000', details: '...' },
+    { name: 'Shakil', productQty: 5, amount: '50,000', details: '...' },
+    { name: 'Shakil', productQty: 5, amount: '50,000', details: '...' },
+    { name: 'Shakil', productQty: 5, amount: '50,000', details: '...' }
+  ];
+
+  const investorEquityData = [
+    { name: 'Shakil Ahmed', equity: '5%', amount: '50,000', details: '...' },
+    { name: 'Shakil', equity: '5%', amount: '50,000', details: '...' },
+    { name: 'Shakil', equity: '5%', amount: '50,000', details: '...' },
+    { name: 'Shakil', equity: '5%', amount: '50,000', details: '...' },
+    { name: 'Shakil', equity: '5%', amount: '50,000', details: '...' },
+    { name: 'Shakil', equity: '5%', amount: '50,000', details: '...' }
+  ];
+  const topSellerData = [
+    { image: topSellerImg, name: 'Shakil', amount: 'TK 10,000' },
+    { image: topSellerImg, name: 'Shakil', amount: 'TK 10,000' },
+    { image: topSellerImg, name: 'Shakil', amount: 'TK 10,000' },
+  ];
 
 const Home = () => {
     return (
@@ -161,7 +194,7 @@ const Home = () => {
                                 <button className="bg-[#139FAD] px-1.5 py-0.5 rounded text-white text-xs font-semibold shadow-lg">View More</button>
                             </div>
                         </div>
-                    <div className="mt-2">
+                        <div className="">
                         <Table>
                             <TableHeader>
                             <TableRow>
@@ -170,43 +203,16 @@ const Home = () => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">EasyDrop</TableCell>
-                                <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                           </TableBody>
+                                {vendorData.map((shop, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="py-1 text-xs">{shop.shopName}</TableCell>
+                                        <TableCell className="text-end py-1 text-xs">
+                                            {/* dialogForverdor--------popup */}
+                                            <DialogForVendor></DialogForVendor>
+                                    </TableCell>
+                                </TableRow>
+                                ))}
+                            </TableBody>
                         </Table>
                         </div>
                     </div>
@@ -222,7 +228,7 @@ const Home = () => {
                                 <button className="bg-[#139FAD] px-1.5 py-0.5 rounded text-white text-xs font-semibold shadow-lg">View More</button>
                             </div>
                         </div>
-                    <div className="mt-2">
+                    <div className="">
                         <Table>
                         <TableHeader>
                                 <TableRow>
@@ -232,66 +238,20 @@ const Home = () => {
                                     <TableHead className="text-xs  text-end py-1">Details</TableHead>
                                 </TableRow>
                             </TableHeader>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil Ahmed</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
+                            <TableBody>
+                                {investorProductData.map((row, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="py-1 text-xs">{row.name}</TableCell>
+                                    <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">{row.productQty}</TableCell>
+                                    <TableCell className="text-center py-1 text-xs">{row.amount}</TableCell>
                                     <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                    <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                    <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                    <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                    <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
-                            <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    05
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                    <TableCell className="text-end py-1 text-xs">
-                                        <button className="rounded">...</button>
-                                </TableCell>
-                            </TableRow>
+                                            {/* dialogForInvestorProduct--------popup */}
+                                            <InvestorProductDialog></InvestorProductDialog>
+                                    </TableCell>
+                                    
+                                </TableRow>
+                                ))}
+                            </TableBody>
                         </Table>
                         </div>
                     </div>
@@ -307,7 +267,7 @@ const Home = () => {
                                 <button className="bg-[#139FAD] px-1.5 py-0.5 rounded text-white text-xs font-semibold shadow-lg">View More</button>
                             </div>
                         </div>
-                        <div className="mt-2">
+                        <div className="">
                         <Table>
                             <TableHeader>
                                 <TableRow>
@@ -318,68 +278,17 @@ const Home = () => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil Ahmed</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
+                                {investorEquityData.map((row, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="py-1 text-xs">{row.name}</TableCell>
+                                    <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">{row.equity}</TableCell>
+                                    <TableCell className="text-center py-1 text-xs">{row.amount}</TableCell>
+                                    <TableCell className="text-end py-1 text-xs">
+                                            {/* dialogForInvestorEquity--------popup */}
+                                            <DialogForInvestorEquity></DialogForInvestorEquity>
+                                    </TableCell>
                                 </TableRow>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
-                                </TableRow>
-                                <TableRow>
-                                <TableCell className="py-1 text-xs">Shakil</TableCell>
-                                <TableCell className="py-1 text-xs text-center text-[#33CF3A] shadow-sm">
-                                    5%
-                                </TableCell>
-                                <TableCell className="text-center py-1 text-xs">50,000</TableCell>
-                                        <TableCell className="text-end py-1 text-xs">
-                                            <button className="rounded">...</button>
-                                </TableCell>
-                                </TableRow>
-                               
-
+                                ))}
                             </TableBody>
                         </Table>
                         </div>
@@ -457,21 +366,15 @@ const Home = () => {
                             </TableRow>
                             </TableHeader>
                             <TableBody>
-                                <TableRow>
-                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
-                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
-                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
+                                {topSellerData.map((row, index) => (
+                                <TableRow key={index}>
+                                    <TableCell className="py-1 text-xs">
+                                    <img src={row.image} className="w-14 h-14 rounded" alt={row.name} />
+                                    </TableCell>
+                                    <TableCell className="py-1 text-xs">{row.name}</TableCell>
+                                    <TableCell className="py-1 text-end text-xs">{row.amount}</TableCell>
                                 </TableRow>
-                                <TableRow>
-                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
-                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
-                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
-                                </TableRow>
-                                <TableRow>
-                                    <TableCell className='py-1 text-xs'><img src={topSellerImg} className="size-12 rounded"></img></TableCell>
-                                    <TableCell className='py-1 text-xs'>Shakil</TableCell>
-                                    <TableCell className='py-1 text-end text-xs'>TK 10,000</TableCell>
-                                </TableRow>
+                                ))}
                             </TableBody>
                         </Table>
                         <div>
@@ -479,7 +382,52 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
+                {/* Sales by category -------- */}
+                <div className="sm:col-span-4 rounded border p-4 shadow-md max-w-[302px] sm:max-w-full">
+                     {/* heading--- */}
+                     <div className="flex justify-between items-center">
+                        <h1 className="font-bold sm:font-semibold text-md sm:text-2xl">Sales By Category</h1>
+                        <Select>
+                            <SelectTrigger className="w-[90px] sm:w-[120px]">
+                                <SelectValue placeholder="Month" />
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                <SelectLabel>Months</SelectLabel>
+                                <SelectItem value="apple">Jan - April</SelectItem>
+                                <SelectItem value="pineapple">May- Aug</SelectItem>
+                                <SelectItem value="mango">Sep - Dec</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                     </div>
 
+                     <div style={{ width: '100%', height: 250 }}>
+                        <ResponsiveContainer>
+                            <PieChart>
+                                <Pie
+                                    data={salesByCategory}
+                                    cx="50%"
+                                    cy="50%"
+                                    labelLine={false}
+                                    label={renderCustomizedLabel}
+                                    outerRadius={80}
+                                    fill="#8884d8"
+                                    dataKey="value"
+                                >
+                                    {salesByCategory.map((entry, index) => (
+                                    <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                    ))}
+                                </Pie>
+                                <Legend iconSize={12} layout="horizontal" horizOriginX="bottom" wrapperStyle={style} />
+                            </PieChart>
+                        </ResponsiveContainer>
+                        
+                    </div>
+
+                    
+                
+                </div>
             </div>
         </>
     );
