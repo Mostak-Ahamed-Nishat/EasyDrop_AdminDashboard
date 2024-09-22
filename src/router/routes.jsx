@@ -17,11 +17,12 @@ import UserList from "@/pages/User/UserList";
 import { createBrowserRouter } from "react-router-dom";
 import DeliveryPage from "@/pages/DeliveryPage";
 import Home from "@/pages/Admin Dashboard/Home";
-import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
+
+
+import PromoCodeOne from "@/pages/PromoCode/PromoCodeOne";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
-import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
-import Promo1 from "@/pages/Demo/Promo1";
-import Promo3 from "@/pages/Demo/Promo3";
+import PromoCodeDetails from "@/pages/PromoCode/PromoCodeDetails";
+
 
 export const router = createBrowserRouter([
   {
@@ -35,10 +36,6 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/home",
         element: <Home></Home>,
-      },
-      {
-        path: '/admin-dashboard/home/promo',
-        element: <Promo1></Promo1>
       },
       {
         path: "/admin-dashboard/place-order",
@@ -96,16 +93,16 @@ export const router = createBrowserRouter([
       //bijoy start
       {
         path: "/admin-dashboard/promo-code",
-        element:<PromoCodeOne/>
+        element: <PromoCodeOne></PromoCodeOne>
+      },
+      {
+        path: "/admin-dashboard/single-promo-code",
+        element:<SinglePromoDetails></SinglePromoDetails>
       },
      
       {
-        path: "/admin-dashboard/promo-code/:code",
-        element:<SinglePromoDetails/>
-      }, 
-      {
-        path: "/admin-dashboard/addpromo-code",
-        element: <AddPromoCode/>
+        path: "/admin-dashboard/promo-code-details",
+        element: <PromoCodeDetails></PromoCodeDetails>
       }
 
       //bijoy end

@@ -41,12 +41,6 @@ const Sidebar = () => {
       to: "/admin-dashboard/home",
     },
     {
-      name: "promo3",
-      to: "/admin-dashboard/home/promo",
-      submenu: null,
-      icon: FolderPlus,
-    },
-    {
       name: "Order",
       icon: CalendarCog,
       submenu: [

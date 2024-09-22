@@ -1,5 +1,4 @@
-import { promoDataApi as data } from "@/api/PromoDataApi";
-import TablePagination from "@/components/TablePagination";
+import { promoDataApi } from "@/api/promoCode/PromoDataApi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
@@ -17,27 +16,17 @@ import {
   TooltipTrigger,
 } from "@radix-ui/react-tooltip";
 import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function PromoCodeOne() {
+const PromoCodeOne= () => {
+  
+  
 
- 
+  const navigate = useNavigate();
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 8;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
-
-  const currentData = data.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
-
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
+  const handleActionClick = (data) => {
+    navigate("/admin-dashboard/single-promo-code", { state: { selectedPromoCode: data } });
   };
-
-  console.log(currentData);
 
   return (
     <div className=" px-5">
@@ -69,13 +58,13 @@ function PromoCodeOne() {
         </TableHeader>
 
         <TableBody>
-          {currentData.map((product) => (
-            <TableRow key={product.id}>
+          {promoDataApi.map((promo) => (
+            <TableRow key={promo.id}>
               {/* Product Info */}
-              <TableCell>{product.id}</TableCell>
-              <TableCell>{product.promo_code}</TableCell>
-              <TableCell>{product.deduct_amount}</TableCell>
-              <TableCell>{product.active_users}</TableCell>
+              <TableCell>{promo.idForList}</TableCell>
+              <TableCell>{promo.promo_code}</TableCell>
+              <TableCell>{promo.deduct_amount}</TableCell>
+              <TableCell>{promo.active_users}</TableCell>
               
 
               <TableCell className="text-right">
@@ -104,12 +93,15 @@ function PromoCodeOne() {
 
                     <Tooltip>
                       <TooltipTrigger>
-                        <Link to={`/admin-dashboard/promo-code/${product.promo_code}`}>
-                        <Ellipsis
+                        <button
+                         onClick={() => handleActionClick(promo)}
+                         >
+                          <Ellipsis
+                           
                           className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
                           size={30}
                         />
-                        </Link>
+                        </button>
                       </TooltipTrigger>
                      
                     </Tooltip>
@@ -121,12 +113,12 @@ function PromoCodeOne() {
         </TableBody>
       </Table>
       {/* Pagination */}
-      <TablePagination
+      {/* <TablePagination
         currentPage={currentPage}
         totalPages={totalPages}
         handlePageChange={handlePageChange}
         maxPageNumbersToShow={3}
-      />
+      /> */}
     </div>
   );
 }
