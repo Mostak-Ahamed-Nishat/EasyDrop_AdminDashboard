@@ -18,10 +18,10 @@ import {
 } from "@radix-ui/react-tooltip";
 import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 function PromoCodeOne() {
-
+console.log(data)
  
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -37,7 +37,7 @@ function PromoCodeOne() {
     setCurrentPage(page);
   };
 
-  console.log(currentData);
+  // console.log(currentData);
 
   return (
     <div className=" px-5">
@@ -104,12 +104,16 @@ function PromoCodeOne() {
 
                     <Tooltip>
                       <TooltipTrigger>
-                        <Link to={`/admin-dashboard/promo-code/${product.promo_code}`}>
-                        <Ellipsis
+                        <NavLink
+                          productInfoData={{ product }}
+                           to={`/admin-dashboard/promo-code/${product.promo_code}`}
+                         >
+                          <Ellipsis
+                           
                           className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
                           size={30}
                         />
-                        </Link>
+                        </NavLink>
                       </TooltipTrigger>
                      
                     </Tooltip>

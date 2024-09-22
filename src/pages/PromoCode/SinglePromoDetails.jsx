@@ -1,5 +1,5 @@
 import { Ellipsis } from 'lucide-react';
-import { useParams } from 'react-router-dom'
+import { Link, NavLink, useLocation, useParams } from 'react-router-dom'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
 import { IoIosArrowDown } from "react-icons/io";
@@ -16,10 +16,14 @@ import {
 import { PromoCodeUserList as userData } from "@/api/PromoCodeUserData";
 
 
-function SinglePromoDetails() {
+function SinglePromoDetails({productInfoData}) {
+
+  const location = useLocation();
+  const { productInfoData } = location.state || {};
+
+  console.log(productInfoData);
     const { code } = useParams();
-    console.log(code)
-    console.log(userData)
+    
     
     return (
         <section>
@@ -66,12 +70,18 @@ function SinglePromoDetails() {
             {/* header */}
             
         <div className='md:p-5'>
-            <div className='grid grid-cols-2'>
+            <div className='grid grid-cols-2 pb-5'>
                 <h1 className='font-extrabold'>Promo Code: {code}</h1>
-                <div className="flex justify-end ">
-                    <div className=" bg-[#EEF2F7] md:w-[50px] w-[30px] md:h-[45px] h-[30px] flex items-center justify-center rounded-md">
-                    <Ellipsis  className="" />
-                     </div>
+            <div className="flex justify-end ">
+              
+              <NavLink
+                
+                to='/admin-dashboard/promoCodeInfo'
+                            className=" bg-[#EEF2F7] md:w-[50px] w-[30px] md:h-[45px] h-[30px] flex items-center justify-center rounded-md">
+                            <Ellipsis  className="" />
+                     </NavLink>
+            
+
                 </div>
                 </div>
                 

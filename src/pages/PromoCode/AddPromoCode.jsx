@@ -7,7 +7,7 @@ import { IoNotifications } from "react-icons/io5"
 
 import DatePickerPromo from "../PromoCode/DatePickerPromo"    
 import { Textarea } from "@/components/ui/textarea";
-import { Pencil, PencilLine } from "lucide-react";
+import { PencilLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
     
 function AddPromoCode() {
