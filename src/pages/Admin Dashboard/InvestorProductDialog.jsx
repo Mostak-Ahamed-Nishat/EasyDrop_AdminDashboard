@@ -4,7 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { UserRound } from "lucide-react";
 import { useState } from "react";
-import DialogForVendor from "./DialogForVendor";
+import InvestorProductProfile from "./InvestorProductProfile";
 
 
 
@@ -79,7 +79,7 @@ const InvestorProductDialog = () => {
                                     
                                         <TableCell className="text-center text-xs">
                                             {/* dialogForverdor--------popup TODO here another popUp */}
-                                            <DialogForVendor></DialogForVendor>
+                                            <InvestorProductProfile></InvestorProductProfile>
                                     </TableCell>
                                 </TableRow>
                                 ))}

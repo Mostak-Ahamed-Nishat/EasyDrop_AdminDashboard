@@ -20,6 +20,8 @@ import Home from "@/pages/Admin Dashboard/Home";
 import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
 import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
+import Promo1 from "@/pages/Demo/Promo1";
+import Promo3 from "@/pages/Demo/Promo3";
 
 export const router = createBrowserRouter([
   {
@@ -33,6 +35,10 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/home",
         element: <Home></Home>,
+      },
+      {
+        path: '/admin-dashboard/home/promo',
+        element: <Promo1></Promo1>
       },
       {
         path: "/admin-dashboard/place-order",
