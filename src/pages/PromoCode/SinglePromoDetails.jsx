@@ -7,6 +7,8 @@ import { IoNotifications } from "react-icons/io5";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PromoCodeUserList } from '@/api/promoCode/PromoCodeUserData';
 import { promoDataApi } from '@/api/promoCode/PromoDataApi';
+import TablePagination from '@/components/TablePagination';
+import { useState } from 'react';
 
 
 const SinglePromoDetails = () => {
@@ -27,6 +29,24 @@ const SinglePromoDetails = () => {
 
   // console.log(combinedData);
   // console.log(promoCodeData);
+
+  
+  // pagination-------
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(PromoCodeUserList.length / itemsPerPage);
+
+  // Get data for the current page
+  const currentData = PromoCodeUserList.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    };
+
 
   return (
     <section>
@@ -95,7 +115,7 @@ const SinglePromoDetails = () => {
 
           <TableBody>
             
-            {PromoCodeUserList.map((singleP) => (
+            {currentData.map((singleP) => (
               <TableRow key={singleP.id}>
                 <TableCell>{singleP.userId || "N/A"}</TableCell>
                 <TableCell>{singleP.user_nameL || "N/A"}</TableCell>
@@ -107,6 +127,15 @@ const SinglePromoDetails = () => {
             
           </TableBody>
         </Table>
+        {/* Pagination Section */}
+        <div className="text-right py-4">
+            <TablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+            maxPageNumbersToShow={3}
+            />
+        </div>
       </div>
     </section>
   );

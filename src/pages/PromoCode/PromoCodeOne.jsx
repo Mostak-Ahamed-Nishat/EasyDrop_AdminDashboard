@@ -1,9 +1,11 @@
 import { promoDataApi } from "@/api/promoCode/PromoDataApi";
+import TablePagination from "@/components/TablePagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table";
 import {Tooltip,TooltipProvider,TooltipTrigger} from "@radix-ui/react-tooltip";
 import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -14,6 +16,22 @@ const PromoCodeOne= () => {
   const handleActionClick = (data) => {
     navigate("/admin-dashboard/single-promo-code", { state: { selectedPromoCode: data } });
   };
+
+  // pagination-------
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+  const totalPages = Math.ceil(promoDataApi.length / itemsPerPage);
+
+  // Get data for the current page
+  const currentData = promoDataApi.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
+  // Handle page change
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    };
 
   return (
     <div className=" px-5">
@@ -45,8 +63,8 @@ const PromoCodeOne= () => {
         </TableHeader>
 
         <TableBody>
-          {promoDataApi.map((promo) => (
-            <TableRow key={promo.id}>
+          {currentData.map((promo) => (
+            <TableRow key={promo.idForList}>
               {/* Product Info */}
               <TableCell>{promo.idForList}</TableCell>
               <TableCell>{promo.promo_code}</TableCell>
@@ -80,15 +98,12 @@ const PromoCodeOne= () => {
 
                     <Tooltip>
                       <TooltipTrigger>
-                        <button
-                         onClick={() => handleActionClick(promo)}
-                         >
-                          <Ellipsis
-                           
+                      <div
+                          onClick={() => handleActionClick(promo)}
                           className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
-                          size={30}
-                        />
-                        </button>
+                        >
+                          <Ellipsis size={20} />
+                        </div>
                       </TooltipTrigger>
                      
                     </Tooltip>
@@ -99,13 +114,15 @@ const PromoCodeOne= () => {
           ))}
         </TableBody>
       </Table>
-      {/* Pagination */}
-      {/* <TablePagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-        maxPageNumbersToShow={3}
-      /> */}
+         {/* Pagination Section */}
+         <div className="text-right py-4">
+            <TablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+            maxPageNumbersToShow={3}
+            />
+        </div>
     </div>
   );
 }
