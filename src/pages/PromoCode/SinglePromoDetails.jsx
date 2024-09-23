@@ -1,28 +1,28 @@
 import { Ellipsis } from 'lucide-react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
+import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut,MenubarTrigger } from "@/components/ui/menubar";
 import { IoIosArrowDown } from "react-icons/io";
 import { IoNotifications } from "react-icons/io5";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { PromoCodeUserList } from '@/api/promoCode/PromoCodeUserData';
 import { promoDataApi } from '@/api/promoCode/PromoDataApi';
 
+
 const SinglePromoDetails = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  // Get the passed promo code data from location.state
+  
   const promoCodeData = location.state?.selectedPromoCode ? [location.state.selectedPromoCode] : [];
 
   const handlePromoCode = () => {
     if (promoCodeData.length > 0) {
-      // Ensure you're passing the data as an array
       navigate("/admin-dashboard/promo-code-details", { state: { promoCodeData, combinedData } });
     }
   };
 
-  // Merge promoCodeData and PromoCodeUserList, ensuring both are arrays
+  
   const combinedData = [...promoCodeData, ...PromoCodeUserList, ...promoDataApi];
 
   // console.log(combinedData);

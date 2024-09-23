@@ -1,27 +1,14 @@
 import { promoDataApi } from "@/api/promoCode/PromoDataApi";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table";
+import {Tooltip,TooltipProvider,TooltipTrigger} from "@radix-ui/react-tooltip";
 import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
-const PromoCodeOne= () => {
-  
-  
 
+
+const PromoCodeOne= () => {
   const navigate = useNavigate();
 
   const handleActionClick = (data) => {

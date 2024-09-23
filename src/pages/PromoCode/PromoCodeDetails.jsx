@@ -11,13 +11,13 @@ import { Button } from "@/components/ui/button";
 import { useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-function PromoCodeDetails() {
+const PromoCodeDetails =() => {
   const location = useLocation();
   const { promoCodeData, combinedData } = location.state || {};
 
   const [promoName, setPromoName] = useState(promoCodeData?.[0]?.promo_code || "");
   const [promoAmount, setPromoAmount] = useState(promoCodeData?.[0]?.deduct_amount || "");
-  const [promoDate, setPromoDate] = useState(combinedData?.[0]?.register_date || null);
+  const [promoDate, setPromoDate] = useState(combinedData?.[0]?.register_date || new Date());
   const [description, setDescription] = useState("");
 
   useEffect(() => {
@@ -29,6 +29,8 @@ function PromoCodeDetails() {
       setPromoDate(combinedData[0].register_date);
     }
   }, [promoCodeData, combinedData]);
+
+
 
   return (
     <section className="md:p-5 p-1">
@@ -105,16 +107,14 @@ function PromoCodeDetails() {
               onChange={(e) => setPromoAmount(e.target.value)}
             />
           </div>
-
-          {/* Date input with default value */}
+          {/* Date----- */}
           <div className="w-full col-span-3">
-            <Label>Date</Label>
-            <DatePickerPromo
-              className="mt-2"
-              selectedDate={promoDate}
-              onDateChange={(date) => setPromoDate(date)}
-            />
-          </div>
+          <Label>Date</Label>
+          <DatePickerPromo
+            className="mt-2"
+            selectedDate={promoDate}  
+          />
+        </div>
         </div>
 
         {/* Description input */}
