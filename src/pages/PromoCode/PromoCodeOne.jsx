@@ -1,43 +1,37 @@
-import { promoDataApi as data } from "@/api/PromoDataApi";
+import { promoDataApi } from "@/api/promoCode/PromoDataApi";
 import TablePagination from "@/components/TablePagination";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import {
-  Tooltip,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@radix-ui/react-tooltip";
+import {Table,TableBody,TableCell,TableHead,TableHeader,TableRow,} from "@/components/ui/table";
+import {Tooltip,TooltipProvider,TooltipTrigger} from "@radix-ui/react-tooltip";
 import { Ellipsis, Eye, Filter,  Trash2 } from "lucide-react";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-function PromoCodeOne() {
-console.log(data)
- 
 
+
+const PromoCodeOne= () => {
+  const navigate = useNavigate();
+
+  const handleActionClick = (data) => {
+    navigate("/admin-dashboard/single-promo-code", { state: { selectedPromoCode: data } });
+  };
+
+  // pagination-------
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 8;
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(promoDataApi.length / itemsPerPage);
 
-  const currentData = data.slice(
+  // Get data for the current page
+  const currentData = promoDataApi.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
   );
 
+  // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
-  };
-
-  // console.log(currentData);
+    };
 
   return (
     <div className=" px-5">
@@ -69,13 +63,13 @@ console.log(data)
         </TableHeader>
 
         <TableBody>
-          {currentData.map((product) => (
-            <TableRow key={product.id}>
+          {currentData.map((promo) => (
+            <TableRow key={promo.idForList}>
               {/* Product Info */}
-              <TableCell>{product.id}</TableCell>
-              <TableCell>{product.promo_code}</TableCell>
-              <TableCell>{product.deduct_amount}</TableCell>
-              <TableCell>{product.active_users}</TableCell>
+              <TableCell>{promo.idForList}</TableCell>
+              <TableCell>{promo.promo_code}</TableCell>
+              <TableCell>{promo.deduct_amount}</TableCell>
+              <TableCell>{promo.active_users}</TableCell>
               
 
               <TableCell className="text-right">
@@ -104,16 +98,12 @@ console.log(data)
 
                     <Tooltip>
                       <TooltipTrigger>
-                        <NavLink
-                          productInfoData={{ product }}
-                           to={`/admin-dashboard/promo-code/${product.promo_code}`}
-                         >
-                          <Ellipsis
-                           
+                      <div
+                          onClick={() => handleActionClick(promo)}
                           className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
-                          size={30}
-                        />
-                        </NavLink>
+                        >
+                          <Ellipsis size={20} />
+                        </div>
                       </TooltipTrigger>
                      
                     </Tooltip>
@@ -124,13 +114,15 @@ console.log(data)
           ))}
         </TableBody>
       </Table>
-      {/* Pagination */}
-      <TablePagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        handlePageChange={handlePageChange}
-        maxPageNumbersToShow={3}
-      />
+         {/* Pagination Section */}
+         <div className="text-right py-4">
+            <TablePagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            handlePageChange={handlePageChange}
+            maxPageNumbersToShow={3}
+            />
+        </div>
     </div>
   );
 }

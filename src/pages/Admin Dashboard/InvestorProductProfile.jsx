@@ -1,23 +1,21 @@
-import {Dialog,DialogContent,DialogDescription,DialogFooter,DialogHeader,DialogTitle,DialogTrigger} from "@/components/ui/dialog"
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "./select";
+import {Dialog,DialogContent,DialogDescription,DialogHeader,DialogTitle,DialogTrigger} from "@/components/ui/dialog"
+import { ScrollArea } from "@/components/ui/scroll-area";
+import profile from '../../assets/images/user/116808961_2481364412168538_151698124801764199_n.jpg'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { data } from "@/api/userList/userDetails";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "./table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { userDetailTable } from "@/api/userList/userTableApi";
-import profile from '../../assets/images/user/116808961_2481364412168538_151698124801764199_n.jpg'
-import { ScrollArea } from "./scroll-area";
 
- 
-
-const DialogForUserListAdmin = () => {
+const InvestorProductProfile = () => {
     return (
         <Dialog>
-        <DialogTrigger asChild>
-          <button className="border rounded px-3">...</button>
-            </DialogTrigger>
-                <DialogContent className="sm:max-w-[1080px] sm:h-screen">
-          <DialogHeader>
-            <DialogTitle>User Details</DialogTitle>
+      <DialogTrigger asChild>
+      <button className="rounded">...</button>
+      </DialogTrigger>
+      <DialogContent className="max-w-[550px] sm:max-w-[1080px] sm:h-screen">
+      <DialogHeader>
+            <DialogTitle>Investor Profile</DialogTitle>
             <DialogDescription>
              
             </DialogDescription>
@@ -37,32 +35,29 @@ const DialogForUserListAdmin = () => {
                                         </div>
                                         <div className="space-y-1">
                                             <p className="font-semibold text-xs">Name: Shakil</p>
-                                            <p className="text-gray-500 font-semibold text-xs">ID: #32452</p>
                                             <p className="font-semibold text-xs">Email: shakil...@gmail.com</p>
                                             <p className="font-semibold text-xs">Phone: 01878997887</p>
                                         </div>
                                         <div>
-                                            <button className="bg-blue-500 w-full rounded text-white font-semibold">Send Message</button>
+                                            <button className="bg-[#139FAD] w-full rounded text-white font-semibold">Send Message</button>
                                         </div>
                                     </div>
                                 </div> 
                                 <div className="shadow-md rounded-lg p-4 space-y-2 border">
-                                    <h1 className="text:md sm:text-xl font-semibold">User Details</h1>
+                                    <h1 className="text:md sm:text-xl font-semibold">Investor Details</h1>
                                     <div className="space-y-2">
-                                        <p className="font-semibold text-xs">Last Ordered: 13/08/2024</p>
-                                        <p className="font-semibold text-xs">Refferred by: @24456</p>
-                                        <p className="font-semibold text-xs">Avg Order Value: Tk. 2,025</p>
-                                        <p className="font-semibold text-xs">Address: Mohammadpur, dhaka</p>
-                                        <p className="font-semibold text-xs">Balance Details: Tk. 1,500</p>
-                                        <p className="font-semibold text-xs">Company Name: Yellow</p>
-                                    </div>
+                                        <p className="font-semibold text-xs">Account ID: <span className="text-gray-500">#2154458</span></p>
+                                        <p className="font-semibold text-xs">Address: <span className="text-gray-500">mohammadpur, Katasur, Dhaka</span></p>
+                                        <p className="font-semibold text-xs">Occupation: TODO</p>
+                                        <p className="font-semibold text-xs">Balance Details: TODO</p>
+                                     </div>
                                 </div> 
-                                <div className="shadow-md rounded-lg p-4 border">
+                                <div className="shadow-md rounded-lg p-4 border bg-[#139FAD]">
                                     <div className="space-y-2">
-                                        <p className="font-semibold text-xs">Subscribtion fee: Tk 2,000</p>
-                                        <p className="font-semibold text-xs">Subscribtion expiry date: 13/08/2024</p>
-                                       
-                                    </div>
+                                        <p className="font-semibold text-xs text-slate-50">Bank Name: IBBL</p>
+                                        <p className="font-semibold text-xs text-slate-50">Account Num: 1850 *****235</p>
+                                        <p className="font-semibold text-xs text-slate-50">Branch: Elephant Road</p>
+                                     </div>
                                 </div> 
                             </div>
                             
@@ -71,22 +66,17 @@ const DialogForUserListAdmin = () => {
                                     {/* Payment History Table */}
                                 <div className=" grid grid-flow-col rounded-lg gap-3">
                                     <div className="row-span-3 shadow-md rounded-lg p-4">
-                                        <h1 className="text-xs sm:text-lg font-semibold">Current Balance</h1>
-                                        <h1 className="text-md sm:text-lg font-bold">200</h1>
+                                        <h1 className="text-xs sm:text-lg font-semibold">Investment Amount</h1>
+                                        <h1 className="text-md sm:text-lg font-bold">TK 2,00500</h1>
                                     </div>
                                     <div className="row-span-3 shadow-md rounded-lg p-4">
-                                        <h1 className="text-xs sm:text-lg font-semibold">Running Order</h1>
-                                        <h1 className="text-md sm:text-lg font-bold">200</h1>
+                                        <h1 className="text-xs sm:text-lg font-semibold">Total Investment Products</h1>
+                                        <h1 className="text-md sm:text-lg font-bold">2</h1>
                                     </div>
                                     <div className="row-span-3 shadow-md rounded-lg p-4">
-                                        <h1 className="text-xs sm:text-lg font-semibold">Total Order</h1>
+                                        <h1 className="text-xs sm:text-lg font-semibold">Income</h1>
                                         <h1 className="text-md sm:text-lg font-bold">200</h1>
                                     </div>
-                                    <div className="row-span-3 shadow-md rounded-lg p-4">
-                                        <h1 className="text-xs sm:text-lg font-semibold">Cancled</h1>
-                                        <h1 className="text-md sm:text-lg font-bold">200</h1>
-                                    </div>
-                                    
                                 </div>
 
                             {/* Performance Chart */}
@@ -179,12 +169,10 @@ const DialogForUserListAdmin = () => {
                 </div>
                 </div>
                 </ScrollArea>
-          <DialogFooter>
-            {/* <Button type="submit">Save changes</Button> */}
-          </DialogFooter>
-                </DialogContent>
-            </Dialog>
+        
+      </DialogContent>
+    </Dialog>
     );
 };
 
-export default DialogForUserListAdmin;
+export default InvestorProductProfile;

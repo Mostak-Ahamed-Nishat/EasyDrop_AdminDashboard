@@ -17,13 +17,17 @@ import UserList from "@/pages/User/UserList";
 import { createBrowserRouter } from "react-router-dom";
 import DeliveryPage from "@/pages/DeliveryPage";
 import Home from "@/pages/Admin Dashboard/Home";
-import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
+
+
+import PromoCodeOne from "@/pages/PromoCode/PromoCodeOne";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
-import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
-import PromoCodeInfo from "@/pages/PromoCode/PromoCodeInfo";
+// import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
+// import PromoCodeInfo from "@/pages/PromoCode/PromoCodeInfo";
 import Commission from "@/pages/Commission/Commission";
 import CreateCommission from "@/pages/Commission/CreateCommission";
 import CommissionDetails from "@/pages/Commission/CommissionDetails";
+import PromoCodeDetails from "@/pages/PromoCode/PromoCodeDetails";
+
 
 export const router = createBrowserRouter([
   {
@@ -94,34 +98,17 @@ export const router = createBrowserRouter([
       //bijoy start
       {
         path: "/admin-dashboard/promo-code",
-        element:<PromoCodeOne/>
+        element: <PromoCodeOne></PromoCodeOne>
       },
       {
-        path: "/admin-dashboard/promoCodeInfo",
-        element:<PromoCodeInfo/>
+        path: "/admin-dashboard/single-promo-code",
+        element:<SinglePromoDetails></SinglePromoDetails>
       },
      
       {
-        path: "/admin-dashboard/promo-code/:code",
-        element:<SinglePromoDetails/>
-      }, 
-    
-      {
-        path: "/admin-dashboard/addpromo-code",
-        element: <AddPromoCode/>
-      },
-      {
-        path: '/admin-dashboard/commission',
-        element: <Commission/>
-      },
-      {
-        path: "/admin-dashboard/create_commission",
-        element: <CreateCommission/>
-      },
-      {
-        path: "/admin-dashboard/commission-details/:id",
-        element: <CommissionDetails/>
-      },
+        path: "/admin-dashboard/promo-code-details",
+        element: <PromoCodeDetails></PromoCodeDetails>
+      }
 
       //bijoy end
     ],
