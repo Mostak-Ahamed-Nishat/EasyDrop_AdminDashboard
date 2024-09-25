@@ -108,7 +108,20 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/promo-code-details",
         element: <PromoCodeDetails></PromoCodeDetails>
+      },
+      {
+        path: '/admin-dashboard/commission',
+        element: <Commission/>
+      },
+      {
+        path: "/admin-dashboard/create_commission",
+        element:<CreateCommission/>
+      },
+      {
+        path: "/admin-dashboard/commission-details/:id",
+        element:<CommissionDetails/>
       }
+
 
       //bijoy end
     ],

@@ -108,7 +108,7 @@ function CommissionDetails() {
 
       {isEditing ? (
         // If in edit mode, display form inputs for editing the data
-        <div className="grid gap-4">
+        <div className="grid gap-4 w-3/6">
           <div>
             <Label className="font-semibold">Commission Name:</Label>
             <Input
@@ -116,7 +116,7 @@ function CommissionDetails() {
               name="commission_name"
               value={editedData.commission_name}
               onChange={handleInputChange}
-              className="border px-2 py-1 w-full rounded"
+              className="border  mt-2 w-full rounded"
             />
           </div>
           <div>
@@ -126,7 +126,7 @@ function CommissionDetails() {
               name="commission_amount"
               value={editedData.commission_amount}
               onChange={handleInputChange}
-              className="border px-2 py-1 w-full rounded"
+              className="border  mt-2 w-full rounded"
             />
           </div>
           <div>
@@ -135,7 +135,7 @@ function CommissionDetails() {
               name="description"
               value={editedData.description}
               onChange={handleInputChange}
-              className="border px-2 py-1 w-full rounded"
+              className="border  mt-2 w-full rounded"
             />
           </div>
           <div>
@@ -145,7 +145,7 @@ function CommissionDetails() {
               name="start_date"
               value={editedData.start_date}
               onChange={handleInputChange}
-              className="border px-2 py-1 w-full rounded"
+              className="border  mt-2 w-full rounded"
             />
           </div>
           <div>
@@ -155,7 +155,7 @@ function CommissionDetails() {
               name="end_date"
               value={editedData.end_date}
               onChange={handleInputChange}
-              className="border px-2 py-1 w-full rounded"
+              className="border  mt-2 w-full rounded"
             />
           </div>
         </div>
