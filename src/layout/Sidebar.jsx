@@ -114,7 +114,7 @@ const Sidebar = () => {
       name: "Commission",
       icon: BadgePercent,
       submenu: null,
-      to: "/commission",
+      to: "/admin-dashboard/commission",
     },
   ];
 

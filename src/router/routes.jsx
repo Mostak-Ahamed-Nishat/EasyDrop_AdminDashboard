@@ -21,6 +21,9 @@ import PromoCodeOne from "@/pages/PromoCode/PromoCode_1";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
 import AddPromoCode from "@/pages/PromoCode/AddPromoCode";
 import PromoCodeInfo from "@/pages/PromoCode/PromoCodeInfo";
+import Commission from "@/pages/Commission/Commission";
+import CreateCommission from "@/pages/Commission/CreateCommission";
+import CommissionDetails from "@/pages/Commission/CommissionDetails";
 
 export const router = createBrowserRouter([
   {
@@ -106,7 +109,19 @@ export const router = createBrowserRouter([
       {
         path: "/admin-dashboard/addpromo-code",
         element: <AddPromoCode/>
-      }
+      },
+      {
+        path: '/admin-dashboard/commission',
+        element: <Commission/>
+      },
+      {
+        path: "/admin-dashboard/create_commission",
+        element: <CreateCommission/>
+      },
+      {
+        path: "/admin-dashboard/commission-details/:id",
+        element: <CommissionDetails/>
+      },
 
       //bijoy end
     ],

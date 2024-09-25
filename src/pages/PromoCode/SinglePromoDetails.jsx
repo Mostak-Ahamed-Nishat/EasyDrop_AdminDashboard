@@ -19,7 +19,7 @@ import { PromoCodeUserList as userData } from "@/api/PromoCodeUserData";
 function SinglePromoDetails({productInfoData}) {
 
   const location = useLocation();
-  const { productInfoData } = location.state || {};
+  // const { productInfoData } = location.state || {};
 
   console.log(productInfoData);
     const { code } = useParams();
