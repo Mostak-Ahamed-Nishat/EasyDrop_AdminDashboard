@@ -22,15 +22,16 @@ import {
 } from "@/components/ui/tooltip";
 
 import { NavLink, useNavigate } from "react-router-dom";
+import ProductFilter from "@/components/ProductFilter";
 
 function ProductListPage() {
   // navigate to the product edit page----
   const navigate = useNavigate();
 
   const goToProductEditPage = () => {
-        navigate('/admin-dashboard/product/edit-product');
+    navigate("/admin-dashboard/product/edit-product");
   };
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
   const totalPages = Math.ceil(data.length / itemsPerPage);
@@ -48,6 +49,8 @@ function ProductListPage() {
 
   return (
     <>
+      {/* ****** Filter option ******* */}
+      <ProductFilter />
       {/* Main Table Content */}
       <Table>
         <TableHeader>
@@ -133,13 +136,12 @@ function ProductListPage() {
                     <Tooltip>
                       <TooltipTrigger>
                         {/* navigate to the product edit page */}
-                       
+
                         <PencilLine
                           onClick={goToProductEditPage}
-                            className="bg-[#b5d0f0] rounded-sm py-[5px] px-[8px]"
-                            size={30}
-                          />
-                        
+                          className="bg-[#b5d0f0] rounded-sm py-[5px] px-[8px]"
+                          size={30}
+                        />
                       </TooltipTrigger>
                       <TooltipContent>
                         <p>Edit Product</p>
