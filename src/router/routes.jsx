@@ -12,12 +12,9 @@ import ProductDetailsPage from "@/pages/Product/ProductDetailsPage";
 import ProductListPage from "@/pages/Product/ProductListPage";
 import UserList from "@/pages/User/UserList";
 
-
-
 import { createBrowserRouter } from "react-router-dom";
 import DeliveryPage from "@/pages/DeliveryPage";
 import Home from "@/pages/Admin Dashboard/Home";
-
 
 import PromoCodeOne from "@/pages/PromoCode/PromoCodeOne";
 import SinglePromoDetails from "@/pages/PromoCode/SinglePromoDetails";
@@ -27,7 +24,9 @@ import Commission from "@/pages/Commission/Commission";
 import CreateCommission from "@/pages/Commission/CreateCommission";
 import CommissionDetails from "@/pages/Commission/CommissionDetails";
 import PromoCodeDetails from "@/pages/PromoCode/PromoCodeDetails";
-
+import TokenPage from "@/pages/Support Token/TokenPage";
+import TokenDetailsPage from "@/pages/Support Token/TokenDetailsPage";
+import TokenCreatePage from "@/pages/Support Token/TokenCreatePage";
 
 export const router = createBrowserRouter([
   {
@@ -44,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin-dashboard/place-order",
-        element: <PlaceOrder2></PlaceOrder2>
+        element: <PlaceOrder2></PlaceOrder2>,
       },
       {
         path: "/admin-dashboard/order-list",
@@ -91,37 +90,48 @@ export const router = createBrowserRouter([
       //   element: <OrderDetails/>
       // },
       {
-        path: '/admin-dashboard/user',
-        element: <UserList></UserList>
+        path: "/admin-dashboard/user",
+        element: <UserList></UserList>,
       },
 
       //bijoy start
       {
         path: "/admin-dashboard/promo-code",
-        element: <PromoCodeOne></PromoCodeOne>
+        element: <PromoCodeOne></PromoCodeOne>,
       },
       {
         path: "/admin-dashboard/single-promo-code",
-        element:<SinglePromoDetails></SinglePromoDetails>
+        element: <SinglePromoDetails></SinglePromoDetails>,
       },
-     
+
       {
         path: "/admin-dashboard/promo-code-details",
-        element: <PromoCodeDetails></PromoCodeDetails>
+        element: <PromoCodeDetails></PromoCodeDetails>,
       },
       {
-        path: '/admin-dashboard/commission',
-        element: <Commission/>
+        path: "/admin-dashboard/commission",
+        element: <Commission />,
       },
       {
         path: "/admin-dashboard/create_commission",
-        element:<CreateCommission/>
+        element: <CreateCommission />,
       },
       {
         path: "/admin-dashboard/commission-details/:id",
-        element:<CommissionDetails/>
-      }
-
+        element: <CommissionDetails />,
+      },
+      {
+        path: "/admin-dashboard/support",
+        element: <TokenPage />,
+      },
+      {
+        path: "/admin-dashboard/support/details/:token_number",
+        element: <TokenDetailsPage />,
+      },
+      {
+        path: "/admin-dashboard/support/create",
+        element: <TokenCreatePage />,
+      },
 
       //bijoy end
     ],
