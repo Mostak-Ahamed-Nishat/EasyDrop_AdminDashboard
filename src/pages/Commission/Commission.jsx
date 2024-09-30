@@ -31,65 +31,175 @@ const handleEllipsisClick = (commissionId) => {
     
 
   return (
-      <div className=" px-5">
+    //   <div className=" px-5">
           
-          {/* header section */}
-          <div className="flex items-center gap-2 justify-end md:p-4 p-2 lg:p-5">
-          <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse">
-            <div className="flex gap-3">
-              <div className="flex sm:flex-row-reverse gap-3 items-center">
-                <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-bold text-xl">Shakil</p>
-                  <p className="text-[#8F8F8F] font-semibold">User Id: TODO</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <IoNotifications />
-            </div>
-          </div>
+    //       {/* header section */}
+    //       <div className="flex items-center gap-2 justify-end md:p-4 p-2 lg:p-5">
+    //       <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse">
+    //         <div className="flex gap-3">
+    //           <div className="flex sm:flex-row-reverse gap-3 items-center">
+    //             <Avatar>
+    //               <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+    //               <AvatarFallback>CN</AvatarFallback>
+    //             </Avatar>
+    //             <div>
+    //               <p className="font-bold text-xl">Shakil</p>
+    //               <p className="text-[#8F8F8F] font-semibold">User Id: TODO</p>
+    //             </div>
+    //           </div>
+    //         </div>
+    //         <div>
+    //           <IoNotifications />
+    //         </div>
+    //       </div>
 
-          <div className="hidden sm:block">
-            <Menubar>
-              <MenubarMenu>
-                <MenubarTrigger><IoIosArrowDown /></MenubarTrigger>
-                <MenubarContent className='mt-5'>
-                  <MenubarItem>
-                    Settings <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Logout</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-            </Menubar>
-          </div>
-            </div>
-            {/* header section */}
-      {/* Main Table Content */}
-      <div className="grid grid-cols-1 py-10">
+    //       <div className="hidden sm:block">
+    //         <Menubar>
+    //           <MenubarMenu>
+    //             <MenubarTrigger><IoIosArrowDown /></MenubarTrigger>
+    //             <MenubarContent className='mt-5'>
+    //               <MenubarItem>
+    //                 Settings <MenubarShortcut>⌘T</MenubarShortcut>
+    //               </MenubarItem>
+    //               <MenubarSeparator />
+    //               <MenubarItem>Print</MenubarItem>
+    //               <MenubarSeparator />
+    //               <MenubarItem>Share</MenubarItem>
+    //               <MenubarSeparator />
+    //               <MenubarItem>Logout</MenubarItem>
+    //             </MenubarContent>
+    //           </MenubarMenu>
+    //         </Menubar>
+    //       </div>
+    //         </div>
+    //         {/* header section */}
+    //   {/* Main Table Content */}
+    //   <div className="grid grid-cols-1 py-10">
        
-        <Link  to='/admin-dashboard/create_commission'  className="flex justify-end">
-           <Button className="col-span-1  bg-[#139FAD]">Create Commission</Button>
-              </Link>
+    //     <Link  to='/admin-dashboard/create_commission'  className="flex justify-end">
+    //        <Button className="md:col-span-1  bg-[#139FAD]">Create Commission</Button>
+    //           </Link>
               
+    //   </div>
+
+
+    //   <Table>
+    //     <TableHeader>
+    //       <TableRow>
+    //         <TableHead>SI</TableHead>
+    //         <TableHead>Commission Name</TableHead>
+    //         <TableHead>Commission Amount</TableHead>
+            
+    //         <TableHead>Actions</TableHead>
+    //       </TableRow>
+    //     </TableHeader>
+
+    //     <TableBody>
+    //       {data.map((commission) => (
+    //         <TableRow key={commission.id}>
+    //           {/* Product Info */}
+    //           <TableCell>{commission.id}</TableCell>
+    //           <TableCell>{commission.commission_name}</TableCell>
+    //           <TableCell>{commission.commission_amount}</TableCell>
+              
+              
+
+    //           <TableCell className="text-right">
+    //             <div className="flex gap-2 items-center">
+    //               <TooltipProvider>
+    //                 <Tooltip>
+    //                   <TooltipTrigger>
+                       
+
+    //                     <Eye 
+    //                     className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
+    //                       size={30}
+    //                     />
+    //                   </TooltipTrigger>
+                 
+    //                 </Tooltip>
+    //                 <Tooltip>
+    //                   <TooltipTrigger>
+    //                     <Trash2
+    //                       className="bg-[#FDEFEF] text-red-500 rounded-sm py-[5px] px-[8px]"
+    //                       size={30}
+    //                     />
+    //                   </TooltipTrigger>
+                     
+    //                 </Tooltip>
+
+    //                 <Tooltip>
+    //                   <TooltipTrigger>
+    //                   <Link onClick={() => handleEllipsisClick(commission.id)}>
+    //                       <Ellipsis className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]" size={30} />
+    //                     </Link>
+    //                   </TooltipTrigger>
+                     
+    //                 </Tooltip>
+    //               </TooltipProvider>
+    //             </div>
+    //           </TableCell>
+    //         </TableRow>
+    //       ))}
+    //     </TableBody>
+    //   </Table>
+     
+    // </div>
+    
+    <div className="px-5">
+    {/* Header section */}
+    <div className="flex items-center gap-2 justify-end md:p-4 p-2 lg:p-5">
+      <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse w-full">
+        <div className="flex gap-3">
+          <div className="flex sm:flex-row-reverse gap-3 items-center">
+            <Avatar>
+              <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+              <AvatarFallback>CN</AvatarFallback>
+            </Avatar>
+            <div>
+              <p className="font-bold text-xl">Shakil</p>
+              <p className="text-[#8F8F8F] font-semibold">User Id: TODO</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <IoNotifications />
+        </div>
       </div>
 
+      <div className="hidden sm:block">
+        <Menubar>
+          <MenubarMenu>
+            <MenubarTrigger><IoIosArrowDown /></MenubarTrigger>
+            <MenubarContent className='mt-5'>
+              <MenubarItem>Settings <MenubarShortcut>⌘T</MenubarShortcut></MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Print</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Share</MenubarItem>
+              <MenubarSeparator />
+              <MenubarItem>Logout</MenubarItem>
+            </MenubarContent>
+          </MenubarMenu>
+        </Menubar>
+      </div>
+    </div>
 
-      <Table>
+    {/* Create Commission Button */}
+    <div className="grid grid-cols-1 py-10">
+      <Link to='/admin-dashboard/create_commission' className="flex justify-end">
+        <Button className="md:col-span-1 bg-[#139FAD]">Create Commission</Button>
+      </Link>
+    </div>
+
+    {/* Table */}
+    <div className="overflow-x-auto">
+      <Table className="w-full">
         <TableHeader>
           <TableRow>
             <TableHead>SI</TableHead>
             <TableHead>Commission Name</TableHead>
             <TableHead>Commission Amount</TableHead>
-            
             <TableHead>Actions</TableHead>
           </TableRow>
         </TableHeader>
@@ -97,44 +207,28 @@ const handleEllipsisClick = (commissionId) => {
         <TableBody>
           {data.map((commission) => (
             <TableRow key={commission.id}>
-              {/* Product Info */}
               <TableCell>{commission.id}</TableCell>
               <TableCell>{commission.commission_name}</TableCell>
               <TableCell>{commission.commission_amount}</TableCell>
-              
-              
-
               <TableCell className="text-right">
-                <div className="flex gap-2 items-center">
+                <div className="flex gap-2 items-center justify-start">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger>
-                        {/* navigate to the product edit page */}
-
-                        <Eye 
-                        className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]"
-                          size={30}
-                        />
+                        <Eye className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]" size={30} />
                       </TooltipTrigger>
-                 
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger>
-                        <Trash2
-                          className="bg-[#FDEFEF] text-red-500 rounded-sm py-[5px] px-[8px]"
-                          size={30}
-                        />
+                        <Trash2 className="bg-[#FDEFEF] text-red-500 rounded-sm py-[5px] px-[8px]" size={30} />
                       </TooltipTrigger>
-                     
                     </Tooltip>
-
                     <Tooltip>
                       <TooltipTrigger>
-                      <Link onClick={() => handleEllipsisClick(commission.id)}>
+                        <Link onClick={() => handleEllipsisClick(commission.id)}>
                           <Ellipsis className="bg-[#EEF2F7] rounded-sm py-[5px] px-[8px]" size={30} />
                         </Link>
                       </TooltipTrigger>
-                     
                     </Tooltip>
                   </TooltipProvider>
                 </div>
@@ -143,8 +237,8 @@ const handleEllipsisClick = (commissionId) => {
           ))}
         </TableBody>
       </Table>
-     
     </div>
+  </div>
   );
 }
 

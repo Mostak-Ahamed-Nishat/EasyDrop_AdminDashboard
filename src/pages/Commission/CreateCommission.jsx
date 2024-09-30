@@ -1,54 +1,37 @@
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 import { Menubar, MenubarContent, MenubarItem, MenubarMenu, MenubarSeparator, MenubarShortcut, MenubarTrigger } from "@/components/ui/menubar";
 import { Textarea } from '@/components/ui/textarea'
 import { IoIosArrowDown } from 'react-icons/io';
-import { IoNotifications } from 'react-icons/io5'
+import { IoNotifications } from 'react-icons/io5';
+
+
+import { useState } from "react"
+import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
+
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+
+} from "@/components/ui/popover"
+import Header from '../Header/Header';
+
 
 function CreateCommission() {
-    return (
-        <section className='p-6'>
-{/* header section */}
-            <div className="flex items-center gap-2 justify-end md:p-4 p-2 lg:p-5">
-          <div className="flex items-center gap-28 md:gap-5 sm:flex-row-reverse">
-            <div className="flex gap-3">
-              <div className="flex sm:flex-row-reverse gap-3 items-center">
-                <Avatar>
-                  <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-                  <AvatarFallback>CN</AvatarFallback>
-                </Avatar>
-                <div>
-                  <p className="font-bold text-xl">Shakil</p>
-                  <p className="text-[#8F8F8F] font-semibold">User Id: TODO</p>
-                </div>
-              </div>
-            </div>
-            <div>
-              <IoNotifications />
-            </div>
-          </div>
 
-          <div className="hidden sm:block">
-            <Menubar>
-              <MenubarMenu>
-                <MenubarTrigger><IoIosArrowDown /></MenubarTrigger>
-                <MenubarContent className='mt-5'>
-                  <MenubarItem>
-                    Settings <MenubarShortcut>⌘T</MenubarShortcut>
-                  </MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Print</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Share</MenubarItem>
-                  <MenubarSeparator />
-                  <MenubarItem>Logout</MenubarItem>
-                </MenubarContent>
-              </MenubarMenu>
-            </Menubar>
-          </div>
-            </div>
+  const [date, setDate] = useState()
+  const [enddate, setEndDate] = useState()
+
+    return (
+        <section className='md:p-6 p-2'>
+{/* header section */}
+           <Header />
             {/* header section */}
 
         <div className=" md:pt-10  md:w-2/6">
@@ -67,14 +50,54 @@ function CreateCommission() {
                     <Textarea type="text" id="description" placeholder="Give a description    " className="" />
                 </div>
 
-          <div className="w-full col-span-3" >
-                    <Label >Date</Label>
-                    {/* <DatePickerPromo className="mt-2"/> */}
+          <div className="w-full col-span-3 grid gap-1.5 pb-5" >
+                    <Label htmlFor="description" className="pb-2">Start Date</Label>
+                    <Popover>
+                     <PopoverTrigger asChild>
+                       <Button
+                        variant="outline"
+                        className={cn("justify-start text-left font-normal", !date && "text-muted-foreground" )}>
+          <CalendarIcon className="mr-2 h-4 w-4" />
+          {date ? format(date, "PPP") : <span>Pick starting date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={date}
+          onSelect={setDate}
+          initialFocus
+        />
+      </PopoverContent>
+                      </Popover>
+          </div>
+          
+          
+          <div className="w-full col-span-3 grid gap-1.5" >
+                    <Label htmlFor="description" className="pb-2">End Date</Label>
+                    <Popover>
+                     <PopoverTrigger asChild>
+                       <Button
+                        variant="outline"
+                        className={cn("justify-start text-left font-normal", !enddate && "text-muted-foreground" )}>
+          <CalendarIcon className="mr-2 h-4 w-4" />
+          {enddate ? format(enddate, "PPP") : <span>Pick ending date</span>}
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-auto p-0">
+        <Calendar
+          mode="single"
+          selected={enddate}
+          onSelect={setEndDate}
+          initialFocus
+        />
+      </PopoverContent>
+                      </Popover>
             </div>
 
             </div>
 
-            <div className="pt-5 flex gap-2 justify-end">
+            <div className="pt-5 flex gap-2  justify-end">
               <Button variant="outline" className="px-10">Cancle</Button>
               <Button className="bg-[#139FAD] px-10">Create</Button>
           </div>
